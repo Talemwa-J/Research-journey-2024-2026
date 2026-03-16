@@ -1,0 +1,1319 @@
+% Template for PLoS
+% Version 3.7 Aug 2025
+%
+% % % % % % % % % % % % % % % % % % % % % %
+%
+% -- IMPORTANT NOTE
+%
+% This template contains comments intended 
+% to minimize problems and delays during our production 
+% process. Please follow the template instructions
+% whenever possible.
+%
+% % % % % % % % % % % % % % % % % % % % % % % 
+%
+% Once your paper is accepted for publication, 
+% PLEASE REMOVE ALL TRACKED CHANGES in this file 
+% and leave only the final text of your manuscript. 
+% PLOS recommends the use of latexdiff to track changes during review, as this will help to maintain a clean tex file.
+% Visit https://www.ctan.org/pkg/latexdiff?lang=en for info or contact us at latex@plos.org.
+%
+%
+% There are no restrictions on package use within the LaTeX files except that no packages listed in the template may be deleted.
+%
+% Please do not include colors or graphics in the text.
+%
+% The manuscript LaTeX source should be contained within a single file (do not use \input, \externaldocument, or similar commands).
+%
+% % % % % % % % % % % % % % % % % % % % % % %
+%
+% -- FIGURES AND TABLES
+%
+% Please include tables/figure captions directly after the paragraph where they are first cited in the text.
+%
+% DO NOT INCLUDE GRAPHICS IN YOUR MANUSCRIPT
+% - Figures should be uploaded separately from your manuscript file. 
+% - Figures generated using LaTeX should be extracted and removed from the PDF before submission. 
+% - Figures containing multiple panels/subfigures must be combined into one image file before submission.
+% For figure citations, please use "Fig" instead of "Figure".
+% See http://journals.plos.org/plosone/s/figures for PLOS figure guidelines.
+%
+% Tables should be cell-based and may not contain:
+% - spacing/line breaks within cells to alter layout or alignment
+% - do not nest tabular environments (no tabular environments within tabular environments)
+% - no graphics or colored text (cell background color/shading OK)
+% See http://journals.plos.org/plosone/s/tables for table guidelines.
+%
+% For tables that exceed the width of the text column, use the adjustwidth environment as illustrated in the example table in text below.
+%
+% % % % % % % % % % % % % % % % % % % % % % % %
+%
+% -- EQUATIONS, MATH SYMBOLS, SUBSCRIPTS, AND SUPERSCRIPTS
+%
+% IMPORTANT
+% Below are a few tips to help format your equations and other special characters according to our specifications. For more tips to help reduce the possibility of formatting errors during conversion, please see our LaTeX guidelines at http://journals.plos.org/plosone/s/latex
+%
+% For inline equations, please be sure to include all portions of an equation in the math environment.  For example, x$^2$ is incorrect; this should be formatted as $x^2$ (or $\mathrm{x}^2$ if the romanized font is desired).
+%
+% Do not include text that is not math in the math environment. For example, CO2 should be written as CO\textsubscript{2} instead of CO$_2$.
+%
+% Please add line breaks to long display equations when possible in order to fit size of the column. 
+%
+% For inline equations, please do not include punctuation (commas, etc) within the math environment unless this is part of the equation.
+%
+% When adding superscript or subscripts outside of brackets/braces, please group using {}.  For example, change "[U(D,E,\gamma)]^2" to "{[U(D,E,\gamma)]}^2". 
+%
+% Do not use \cal for caligraphic font.  Instead, use \mathcal{}
+%
+% % % % % % % % % % % % % % % % % % % % % % % % 
+%
+% Please contact latex@plos.org with any questions.
+%
+% % % % % % % % % % % % % % % % % % % % % % % %
+
+\documentclass[10pt,letterpaper]{article}
+\usepackage[top=0.85in,left=1.5in,footskip=0.75in]{geometry}
+\usepackage{tabularx}
+\usepackage{float}
+% amsmath and amssymb packages, useful for mathematical formulas and symbols
+\usepackage{amsmath,amssymb}
+
+% Use adjustwidth environment to exceed column width (see example table in text)
+\usepackage{changepage}
+
+% textcomp package and marvosym package for additional characters
+\usepackage{textcomp,marvosym}
+
+% cite package, to clean up citations in the main text. Do not remove.
+\usepackage{cite}
+
+% Use nameref to cite supporting information files (see Supporting Information section for more info)
+\usepackage{nameref,hyperref}
+
+% line numbers
+\usepackage[right]{lineno}
+
+% ligatures disabled
+\usepackage[nopatch=eqnum]{microtype}
+\DisableLigatures[f]{encoding = *, family = * }
+
+% color can be used to apply background shading to table cells only
+\usepackage[table]{xcolor}
+
+% array package and thick rules for tables
+\usepackage{array}
+
+% create "+" rule type for thick vertical lines
+\newcolumntype{+}{!{\vrule width 2pt}}
+
+% create \thickcline for thick horizontal lines of variable length
+\newlength\savedwidth
+\newcommand\thickcline[1]{%
+  \noalign{\global\savedwidth\arrayrulewidth\global\arrayrulewidth 2pt}%
+  \cline{#1}%
+  \noalign{\vskip\arrayrulewidth}%
+  \noalign{\global\arrayrulewidth\savedwidth}%
+}
+
+% \thickhline command for thick horizontal lines that span the table
+\newcommand\thickhline{\noalign{\global\savedwidth\arrayrulewidth\global\arrayrulewidth 2pt}%
+\hline
+\noalign{\global\arrayrulewidth\savedwidth}}
+
+
+% Remove comment for double spacing
+\usepackage{setspace} 
+\doublespacing
+
+% Text layout
+\raggedright
+\setlength{\parindent}{0.5cm}
+\textwidth 5.25in
+\textheight 8.75in
+
+% Bold the 'Figure #' in the caption and separate it from the title/caption with a period
+% Captions will be left justified
+\usepackage[aboveskip=1pt,labelfont=bf,labelsep=period,justification=raggedright,singlelinecheck=off]{caption}
+\renewcommand{\figurename}{Fig}
+
+% Please use the included `plos2025.bst` as your BibTeX style
+\bibliographystyle{plos2025}
+
+% Remove brackets from numbering in List of References
+\makeatletter
+\renewcommand{\@biblabel}[1]{\quad#1.}
+\makeatother
+
+
+
+% Header and Footer with logo
+\usepackage{lastpage,fancyhdr,graphicx}
+\usepackage{epstopdf}
+%\pagestyle{myheadings}
+\pagestyle{fancy}
+\fancyhf{}
+%\setlength{\headheight}{27.023pt}
+%\lhead{\includegraphics[width=2.0in]{PLOS-submission.eps}}
+\cfoot{\thepage/\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0pt}
+%\renewcommand{\footrule}{\hrule height 2pt \vspace{2mm}}
+%\renewcommand{\footrule}{\hspace{0.5in}\hrule height 2pt \vspace{2mm}}
+\fancyheadoffset[L]{2.25in}
+%\fancyfootoffset[L]{3.0 in}
+%\lfoot{\today}
+
+%% Include all user-defined macros below
+
+\newcommand{\lorem}{\textbf{LOREM}}
+\newcommand{\ipsum}{\textbf{IPSUM}}
+
+%% END MACROS SECTION
+
+\usepackage{lineno,hyperref}
+\usepackage{tikz, pgfplots}
+\usetikzlibrary{positioning}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{resizegather}
+\usepackage{url}\urlstyle{sample}
+\usepackage{makecell}
+\usepackage[numbers]{natbib}
+\usepackage{enumerate}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}{Example}
+\usepackage{multirow,cases,subfigure}
+\usepackage{caption}
+\newtheorem{definition}{Definition}
+\modulolinenumbers[5]
+
+\usepackage{soul}
+\usepackage{xcolor}
+\usepackage{longtable}
+\usepackage{threeparttable}
+\usepackage{booktabs}
+\usepackage[table]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta}
+\usepackage{hhline}
+\usepackage{caption}
+\captionsetup[figure]{skip=2pt}
+
+
+\begin{document}
+\vspace*{0.2in}
+
+% Title must be 250 characters or less.
+\begin{flushleft}
+{\Large
+\textbf{A Hybrid Machine Learning Framework for Land-Use Carbon Accounting Identifies Cropland-to-Forest Conversion as the Dominant Mitigation Lever in Tanzania} % Please use "sentence case" for title and headings (capitalize only the first word in a title (or heading), the first word in a subtitle (or subheading), and any proper nouns).
+}
+\newline
+% Insert author names, affiliations and corresponding author email (do not include titles, positions, or degrees).
+\\
+Talemwa Johansen\textsuperscript{1*},
+Mwema Felix Mwema\textsuperscript{2},
+Silas Mirau\textsuperscript{1},
+Verdiana Masanja\textsuperscript{1,3},
+%Name5 Surname\textsuperscript{2\ddag},
+%Name6 Surname\textsuperscript{2\ddag},
+%Name7 Surname\textsuperscript{1,2,3*},
+%with the Lorem Ipsum Consortium\textsuperscript{\textpilcrow}
+\\
+\bigskip
+\textbf{1} School of Computational and Communication Science and Engineering, Nelson Mandela African Institution of Science and Technology (NM-AIST), P.O. Box 447, Arusha, Tanzania.
+\\
+\textbf{2} School of Materials, Energy, Water and Environmental Science, Nelson Mandela African Institution of Science and Technology (NM-AIST), P.O. Box 447, Arusha, Tanzania.
+\\
+\textbf{3} Department of Science Education,Kampala International University in Tanzania (KUIT), P.O. Box 9790, Dar es salaam, Tanzania.
+\\
+\bigskip
+
+% Insert additional author notes using the symbols described below. Insert symbol callouts after author names as necessary.
+% 
+% Remove or comment out the author notes below if they aren't used.
+%
+% Primary Equal Contribution Note
+%\Yinyang These authors contributed equally to this work.
+
+% Additional Equal Contribution Note
+% Also use this double-dagger symbol for special authorship notes, such as senior authorship.
+%\ddag These authors also contributed equally to this work.
+
+% Current address notes
+%\textcurrency Current Address: Dept/Program/Center, Institution Name, City, State, Country % change symbol to "\textcurrency a" if more than one current address note
+% \textcurrency b Insert second current address 
+% \textcurrency c Insert third current address
+
+% Deceased author note
+%\dag Deceased
+
+% Group/Consortium Author Note
+%\textpilcrow Membership list can be found in the Acknowledgments section.
+
+% Use the asterisk to denote corresponding authorship and provide email address in note below.
+%* correspondingauthor@institute.edu
+
+\end{flushleft}
+% Please keep the abstract below 300 words
+
+% For PLOS Medicine research article authors, please structure your abstract
+% with "Background", "Method and Findings" and "Conclusion" sections per
+% journal requirements.
+
+% For PLOS Neglected Tropical Diseases research article authors, please
+% structure your abstract with "Background", "Methodology", "Findings", and
+% "Conclusion" sections per journal requirements.
+%
+
+
+\section*{Abstract}
+
+\hl{This study presents a structured integration of land-use carbon accounting with regression, time-series, and machine-learning models to examine historical patterns and prospective trajectories of land-use related CO$_2$ emissions in data-constrained settings. Rather than proposing a new accounting methodology, the framework demonstrates how established modeling approaches can be combined to support comparative analysis, scenario exploration, and sensitivity assessment.} We demonstrate the framework's application through a case study of Tanzania, integrating multi-source land-use and socio-economic data within a hybrid ensemble of multiple linear regression, ARIMA time-series modeling, and machine learning approaches (Random Forest and XGBoost).
+
+\hl{The analysis indicates that land-use change explains a substantial share of modeled emissions variability within the accounting-consistent framework, with cropland-to-forest conversion associated with comparatively larger modeled emission reductions under the explored scenarios. These results reflect model-based associations rather than causal dominance and are conditional on the accounting structure and scenario assumptions.} In contrast, Socio-economic drivers, particularly urbanization and economic growth, were associated with variations in modeled emissions, although the magnitude and direction of these effects depend on model specification.
+
+
+
+%In contrast, socio-economic drivers were positively associated with emissions; a 1\% rise in the urban population share corresponded to an average annual increase of approximately 123.45 metric tons of CO$_2$.
+
+\hl{To support comparative sensitivity assessment rather than decision optimization, we introduce the Land Use Carbon Sensitivity Index (LUCSI) as a model-based metric that summarizes the responsiveness of emissions to alternative land-use transition scenarios under explicit assumptions.} Scenario analysis suggests that a 20\% conversion of cropland to forest is associated with a reduction in modeled emissions from 24,339 to 18,041 metric tons, whereas combined urbanization and GDP growth increase projected emissions.
+
+\hl{Machine-learning models, particularly XGBoost, exhibited lower prediction errors under the adopted validation design; however, because the data are temporally indexed, these results should be interpreted as measures of internal predictive consistency rather than strict out-of-sample forecasting accuracy.} Overall, the framework provides evidence-informed and conditional insights that may support prioritization of land-based mitigation options in developing-country contexts under the Paris Agreement, while remaining contingent on model specification, data structure, and validation design.
+
+
+
+
+
+
+
+
+
+%\section*{Abstract}
+%
+%This study presents a novel, transferable modeling framework for quantifying and forecasting land-use CO$_2$ emissions, designed to support climate policy in data-scarce regions. We demonstrate the framework's application through a case study of Tanzania, integrating multi-source land-use and socio-economic data within a hybrid ensemble of multiple linear regression, ARIMA time-series modeling, and machine learning approaches (Random Forest and XGBoost).
+%
+%\hl{Our analysis suggests that land-use change is a major driver of emissions variability, with cropland-to-forest conversion emerging as a potentially high-impact mitigation pathway under the modeled scenarios, accounting for a substantial share of modeled carbon sequestration and associated with reductions in net land-sector emissions by 2021 within the analytical framework.} In contrast, socio-economic drivers increased emissions; a 1\% rise in urban population was associated with an average annual increase of approximately 123.45 metric tons of CO$_2$. To enhance policy relevance, we introduce the Land Use Carbon Sensitivity Index (LUCSI), which measures the marginal change in emissions per GDP unit for each land transition. Scenario analysis indicates that a 20\% conversion of cropland to forest could reduce emissions from 24,339 to 18,041 metric tons, whereas combined urbanization and GDP growth increase projected emissions. Machine learning models, particularly XGBoost, achieved lower prediction errors within the scope of the available dataset. \hl{However, these findings remain conditional on model structure, validation design, and scenario assumptions, and should therefore be interpreted as indicative rather than definitive evidence of mitigation dominance.} Overall, the proposed framework offers a structured and adaptable approach for informing land-based climate mitigation strategies in developing-country contexts under the Paris Agreement.
+
+
+
+
+
+%This study presents a novel, transferable modeling framework for quantifying and forecasting land-use CO$_2$ emissions, designed to support climate policy in data-scarce regions. We demonstrate the framework's application through a critical case study of Tanzania, integrating multi-source land-use and socio-economic data within a hybrid ensemble of multiple linear regression, time-series (ARIMA), and machine learning models (Random Forest, XGBoost).
+%Our analysis suggests that land-use change is a major driver of emissions variability, with cropland-to-forest conversion emerging as a potentially high-impact mitigation pathway under the modeled scenarios. Scenario simulations indicate that this transition accounts for a substantial share of modeled carbon sequestration and is associated with meaningful reductions in net land-sector emissions by 2021. However, these estimates are contingent on model structure, data preprocessing decisions, and scenario assumptions, and should therefore be interpreted as indicative rather than definitive measures of mitigation dominance.
+%
+%Our analysis suggests that land-use change is a major driver of emissions variability, with cropland-to-forest conversion emerging as a potentially high-impact mitigation pathway under the modeled scenarios, accounting for a substantial share of modeled carbon sequestration and associated with notable reductions in net land-sector emissions by 2021 within the analytical framework. In contrast, socio-economic drivers increased emissions; a 1\% rise in urban population was associated with an average annual increase of ~123.45 metric tons of CO$_2$. To enhance policy relevance, we introduce the Land Use Carbon Sensitivity Index (LUCSI), a new indicator that measures the marginal change in emissions per GDP unit for each land transition. Scenario analysis quantified these effects: a 20\% conversion of cropland to forest was projected to reduce emissions from 24,339 to 18,041 metric tons, while combined urbanization and GDP growth increased them. Machine learning models, particularly XGBoost, achieved lower prediction errors within the scope of the available dataset. However, these estimates remain conditional on model structure, validation design, and scenario assumptions and should therefore be interpreted as indicative rather than definitive evidence of mitigation dominance. These findings underscore the potential importance of strategic reforestation and urban planning, while the proposed framework offers a structured approach that may be adapted and further refined in other developing-country contexts under the Paris Agreement.
+
+% Our analysis reveals that land-use change is the dominant driver of emissions variability, with cropland-to-forest conversion emerging as the most effective mitigation strategy, responsible for nearly 90\% of all carbon sequestered by new forests and directly reducing net land sector emissions by over 23\% by 2021. In contrast, socio-economic drivers increased emissions; a 1\% rise in urban population was associated with an average annual increase of ~123.45 metric tons of CO$_2$ . To enhance policy relevance, we introduce the Land Use Carbon Sensitivity Index (LUCSI), a new indicator that measures the marginal change in emissions per GDP unit for each land transition. Scenario analysis quantified these effects: a 20\% conversion of cropland to forest was projected to cut emissions from 24,339 to 18,041 metric tons, while combined urbanization and GDP growth increased them. Machine learning models, particularly XGBoost, provided the most accurate predictions. Our findings highlight the critical need for strategic reforestation and urban planning, and we provide a scalable methodological framework that can be adapted by other developing nations to identify cost-effective pathways for integrating socio-economic development with carbon mitigation goals under the Paris Agreement.
+
+
+
+
+
+
+
+
+
+%This study investigated the impact of land use change on CO$_2$ emissions, combining socio-economic drivers and land transition data to inform sustainable land management strategies. Using merged datasets on land use, emissions, population, and GDP, we applied multiple linear regression, time series, and machine learning   models to quantify and predict emissions dynamics. Results indicated that land use change significantly impacts CO$_2$ emissions, with conversion of cropland to forest being the most effective strategy. This single transition was responsible for nearly 90\% of all carbon sequestered by new forests and directly reduced net land sector emissions by over 23\% by 2021. In contrast, socio-economic drivers increased emissions in Tanzania,  1\% rise in the urban population was associated with an average annual increase of approximately 123.45 metric tons  of CO$_2$. Scenario analysis quantified these effects, a 20\% conversion of cropland to forest was projected to cut emissions from 24,339 to 18,041 metric tons. Conversely, a scenario combining a 10\% increase in urbanization with 5\% GDP growth was projected to raise emissions to 25,772 metric tons.To enhance interpretability and policy relevance, a new indicator the Land Use Carbon Sensitivity Index (LUCSI) is introduced to measure the marginal change in emissions per GDP unit associated with each land transition. The LUCSI identifies reforestation as the most carbon-efficient intervention and highlights the high emission intensity of deforestation and urban expansion. Machine learning models, particularly XGBoost, provided the most accurate predictions. Findings highlight the critical need for strategic urban planning and afforestation policies to successfully integrate socio-economic development with carbon mitigation goals.
+%
+
+% Please keep the Author Summary between 150 and 200 words. Use first person.
+% PLOS ONE, PLOS Biology, PLOS Global Public Health, PLOS Mental Health, and PLOS Water authors please skip this step. Author Summary is not valid for submissions to these journals.
+
+% For PLOS Medicine authors, please structure your author summary with answers to the following questions:
+% Why was this study done?
+% What did the researchers do and find?
+% What do these findings mean?
+%
+%\section*{Author summary}
+%We conducted this study to understand how land use change contributes to CO$_2$ emissions and to identify the socio-economic factors driving these changes. In many developing regions, including Tanzania, limited integrated analyses make it difficult to design effective climate mitigation and land management strategies.\\
+%We combined land use transition data, CO$_2$ emission estimates, and socio-economic indicators to explore the relationships between land dynamics and emission trends. Using both statistical and machine learning approaches, we found that agricultural expansion and forest loss were the major contributors to rising CO$_2$ emissions. Our analysis also revealed that socio-economic factors such as population growth, GDP, and infrastructure development significantly influenced land conversion and emission levels.\\
+%Our findings show that land management decisions and socio-economic development are closely linked to carbon emissions. We emphasize the need for integrated land use policies that balance development with environmental sustainability and promote low-carbon growth. Specifically, our analysis identifies converting cropland to forest as the most impactful intervention for carbon mitigation.
+
+\linenumbers
+
+% Use "Eq" instead of "Equation" for equation citations.
+\section{Introduction}
+
+Climate change remains one of the most urgent environmental and socio-economic challenges of the 21st century, primarily driven by the unprecedented rise in anthropogenic greenhouse gas (GHG) emissions, with carbon dioxide (CO$_2$) being the most dominant contributor \cite{kabir2023impacts, filonchyk2024greenhouse,ghg_emitters_2024}. The Intergovernmental Panel on Climate Change (IPCC) reports that land-based systems play a dual role in climate change: they are both a significant source of emissions and a critical sink capable of mitigating the effects of atmospheric CO$_2$ accumulation \cite{yamanoshita2022ipcc}. Globally, land use change, including deforestation, agricultural expansion, grassland degradation, and urbanization, accounts for approximately 10-15\% of total anthropogenic CO$_2$ emissions \cite{li2024global, liu2023progress,agriculture_emissions_2024}. When forests and natural ecosystems are converted to croplands, pastures, or settlements, carbon stored in vegetation and soils is released into the atmosphere, disrupting the carbon balance of terrestrial ecosystems. Conversely, land management strategies such as afforestation, reforestation, and agroforestry can enhance carbon sequestration capacity, offsetting a portion of emissions \cite{verma2023land, menard2023carbon}.
+
+Despite global agreements like the Paris Accord urging countries to integrate land use management into climate mitigation strategies, the capacity to quantify, predict, and manage land-based CO$_2$ emissions varies significantly across nations \cite{chlela2024integrated}. While developed economies benefit from comprehensive monitoring networks and advanced modeling tools, many developing countries, particularly in sub-Saharan Africa, face substantial challenges \cite{kuteyi2022logistics}. Data gaps are a primary concern, as reliable, long-term datasets on land cover, land use change, and carbon stocks are often scarce or inconsistent \cite{nedd2021synthesis}. Furthermore, aggregation issues arise from the need to scale up local and regional data to national and international levels, which can lead to inaccuracies and a loss of critical detail. Finally, the scenario simplification inherent in many models often overlooks the complex, site-specific socio-economic drivers that influence land use decisions, such as informal land tenure systems, subsistence farming practices, and diverse livelihood strategies \cite{mutale2024modeling,kariuki2022serengeti}. This limitation hampers the formulation of effective, evidence-based land management and climate policies.
+
+\hl{To address these challenges, this study develops a structured integration of land-use carbon accounting with complementary statistical, time-series, and machine-learning models. Rather than proposing a new accounting methodology or algorithmic innovation, the framework demonstrates how established approaches can be combined within a transparent analytical pipeline to support comparative assessment, scenario exploration, and sensitivity analysis under data-constrained conditions. The framework is applied through a national scale case study of Tanzania, which is experiencing rapid land-use change and exemplifies the data and capacity constraints common across sub-Saharan Africa} \cite{sumari2020absurdity,olorunfemi2022dynamics,govender2022remote}.
+
+In the African context, land use change is strongly intertwined with population growth, economic development, and food security concerns \cite{molotoks2021impacts}. Tanzania, as one of the fastest growing economies in East Africa, is experiencing rapid population expansion, accelerating urbanization, and the continuous conversion of forests and grasslands into croplands to meet agricultural demands. The National Forest Resources Monitoring and Assessment (NAFORMA) has reported a net loss of forest cover, while the expansion of settlements and infrastructural projects continues to alter the country’s carbon dynamics \cite{pandey2022challenges}. These pressures highlight an urgent need to understand how socio-economic drivers interact with land transitions to influence CO$_2$ emissions, not only for historical assessment but also for conditional forecasting under alternative development and policy scenarios.
+
+Previous research on land use and CO$_2$ emissions has been dominated by two broad approaches: (i) empirical estimation methods that quantify emissions based on observed land cover changes and default emission factors \cite{gasser2020historical, obermeier2021modelled}, and (ii) process-based or global carbon cycle models that simulate biogeochemical processes at large spatial scales \cite{sun2023machine, chen2021five}. While both approaches have produced valuable insights, they often face limitations in regional applications due to scale mismatches, limited integration of socio-economic drivers, and generalized parameterization that may not capture local land dynamics. In Tanzania, existing studies have largely focused on sector-specific emissions, such as those from forestry or agriculture, without jointly modeling urbanization, GDP growth, and rural--urban migration within a unified analytical framework. The application of advanced statistical and machine-learning methods including multiple linear regression (MLR), autoregressive integrated moving average (ARIMA) models, and ensemble tree-based approaches such as Random Forest and XGBoost has also remained limited, despite their demonstrated capacity to model non-linear relationships in environmental data \cite{schmid2024statistical, mishra2024modeling}.
+
+\hl{Within this context, the contribution of this study lies in the coordinated application and benchmarking of multiple modeling approaches MLR, ARIMA, Random Forest, and XGBoost using a consistent land-use accounting structure and shared data inputs. The analysis distinguishes between accounting-based emissions estimation, statistical association, and predictive modeling, without asserting causal identification or decision-ready optimization. Machine-learning components are employed to explore non-linear patterns and comparative predictive behavior rather than to claim algorithmic superiority or definitive forecasting accuracy.}
+
+\hl{The overarching objective of this research is therefore threefold. First, it applies the integrated framework to examine historical patterns and prospective trajectories of land-use--related CO$_2$ emissions in Tanzania. Second, it benchmarks commonly used statistical, time-series, and machine-learning models under a consistent data structure and validation design. Third, it employs scenario-based analysis and sensitivity metrics to explore the relative responsiveness of modeled emissions to alternative land-use transitions and socio-economic drivers. The resulting insights are intended to be evidence-informed and conditional, supporting strategic prioritization and comparative understanding rather than causal inference or final policy prescription.}
+
+
+
+
+
+
+
+
+
+
+
+%\section{Introduction}
+%%\section{Introduction}
+%Climate change remains one of the most urgent environmental and socio-economic challenges of the 21st century, primarily driven by the unprecedented rise in anthropogenic greenhouse gas (GHG) emissions, with carbon dioxide (CO$_2$) being the most dominant contributor \cite{kabir2023impacts, filonchyk2024greenhouse}. The Intergovernmental Panel on Climate Change (IPCC) reports that land-based systems play a dual role in climate change: they are both a significant source of emissions and a critical sink capable of mitigating the effects of atmospheric CO$_2$ accumulation \cite{yamanoshita2022ipcc}. Globally, land use change, including deforestation, agricultural expansion, grassland degradation, and urbanization, accounts for approximately 10--15\% of total anthropogenic CO$_2$ emissions \cite{li2024global, liu2023progress}. When forests and natural ecosystems are converted to croplands, pastures, or settlements, carbon stored in vegetation and soils is released into the atmosphere, disrupting the carbon balance of terrestrial ecosystems. Conversely, land management strategies such as afforestation, reforestation, and agroforestry can enhance carbon sequestration capacity, offsetting a portion of emissions \cite{verma2023land, menard2023carbon}.
+%
+%
+%
+%Despite global agreements like the Paris Accord urging countries to integrate land use management into climate mitigation strategies, the capacity to quantify, predict, and manage land-based CO$_2$ emissions varies significantly across nations \cite{chlela2024integrated}. While developed economies benefit from comprehensive monitoring networks and advanced modeling tools, many developing countries, particularly in sub-Saharan Africa, face substantial challenges \cite{kuteyi2022logistics}. Data gaps are a primary concern, as reliable, long-term datasets on land cover, land use change, and carbon stocks are often scarce or inconsistent \cite{nedd2021synthesis}. Furthermore, aggregation issues arise from the need to scale up local and regional data to national and international levels, which can lead to inaccuracies and a loss of critical detail. Finally, the scenario simplification inherent in many models often overlooks the complex, site specific socio-economic drivers that influence land use decisions, such as informal land tenure systems, subsistence farming practices, and diverse livelihood strategies \cite{mutale2024modeling,kariuki2022serengeti}. This limitation hampers the formulation of effective, evidence-based land management and climate policies.
+%
+%To address this methodological gap, we developed an integrated, multi-model framework that combines historical land use change with socio-economic data within a hybrid machine learning and statistical ensemble. This study demonstrates the application of this framework through a critical case study of Tanzania, a nation experiencing rapid land-use change and representative of the data and capacity challenges faced by many countries in sub-Saharan Africa \cite{sumari2020absurdity,olorunfemi2022dynamics,govender2022remote}. By applying our framework here, we not only provide actionable insights for Tanzanian climate policy but also establish a transferable template for national land-use carbon accounting and mitigation planning.
+%
+%In the African context, land use change is strongly intertwined with population growth, economic development, and food security concerns \cite{molotoks2021impacts}. Tanzania, as one of the fastest-growing economies in East Africa, is experiencing rapid population expansion, accelerating urbanization, and the continuous conversion of forests and grasslands into croplands to meet agricultural demands. The National Forest Resources Monitoring and Assessment (NAFORMA) has reported a net loss of forest cover, while the expansion of settlements and infrastructural projects continues to alter the country’s carbon dynamics \cite{pandey2022challenges}. These pressures highlight an urgent need to understand how socio-economic drivers interact with land transitions to influence CO$_2$ emissions, not only for historical assessment but also for reliable forecasting under various policy and development scenarios.
+%
+%Previous research on land use and CO$_2$ emissions has been dominated by two broad approaches: (i) empirical estimation methods that quantify emissions based on observed land cover changes and default emission factors \cite{gasser2020historical, obermeier2021modelled}, and (ii) process-based or global carbon cycle models that simulate biogeochemical processes at large spatial scales \cite{sun2023machine, chen2021five}. While both approaches have produced valuable insights, they often fall short in regional applications due to scale mismatches, lack of socio-economic integration, and generalized parameterization that fails to capture local land dynamics. In Tanzania, existing studies have primarily examined sector-specific emissions, such as those from forestry or agriculture, without integrating urbanization, GDP growth, and rural-urban migration patterns into predictive models. Moreover, the use of advanced statistical and machine learning approaches, such as multiple linear regression (MLR), autoregressive integrated moving average (ARIMA), vector autoregression (VAR), and ensemble tree-based models like Random Forest and XGBoost, remains limited, despite their proven potential in handling complex, non-linear interactions in environmental datasets \cite{schmid2024statistical, mishra2024modeling}.
+%
+%This study’s novelty lies in an integrated, multi-model framework that combines historical land use change with urbanization, population, and GDP data. Using a hybrid approach Multiple Linear Regression, ARIMA, and ensemble methods (Random Forest, XGBoost) we quantify the distinct and interactive effects of socio-economic and land use drivers on CO$_2$ emissions. This captures complex, non-linear relationships for improved predictive accuracy \cite{islam2024data, khosravi2024comprehensive}, offering a more holistic basis for climate mitigation policy.
+%%The novelty of this study lies in its integrated, multi-model framework that directly addresses this gap. We move beyond sector-specific or uni-dimensional analyses by combining historical land use change data with key socio-economic indicators: urbanization, population, and GDP. This integrated dataset is then analyzed through a hybrid statistical-machine learning approach, employing Multiple Linear Regression (MLR), time series models (ARIMA), and advanced ensemble algorithms (Random Forest and XGBoost). This methodology allows us to not only quantify the distinct contributions of socio-economic and land use factors but also to leverage machine learning to capture their complex, non-linear interactions for superior predictive accuracy \cite{islam2024data, khosravi2024comprehensive}.  By bridging these domains and methodologies, this study provides a more holistic and robust understanding of CO$_2$ emission dynamics to inform effective climate mitigation policy.
+%
+%
+%
+%%This gap presents both a challenge and an opportunity. By combining historical land use transitions, CO$_2$ emissions data, and socio-economic indicators, it becomes possible to build hybrid predictive models that not only capture the mechanistic relationships between drivers and emissions but also leverage data-driven algorithms for improved forecasting accuracy \cite{islam2024data, khosravi2024comprehensive}. The present study contributes to the existing gap by applying a multi-model framework that integrates statistical, time-series, and machine learning approaches to estimate and predict CO$_2$ emissions from land use change in Tanzania.
+%
+%The overarching goal of this research is to understand and predict the dynamics of CO$_2$ emissions resulting from land use changes in Tanzania. Specifically, the study aims to: develop and calibrate mathematical models linking land use transitions and socio-economic drivers to CO$_2$ emissions; forecast emissions under historical trends and plausible future scenarios; quantify the relative impact of key land transitions such as cropland expansion, urban growth, and reforestation; and provide evidence-based policy recommendations for land use and carbon mitigation strategies.
+
+\section{Materials and Methods}
+\label{sec:methods}
+
+
+
+This study analyzes the dynamics of CO\textsubscript{2} emissions in Tanzania by integrating land use and socio-economic data within a multi-model analytical framework. The focus is on major land use categories cropland, forest land, grassland, other land, and settlements alongside key socio-economic drivers including urbanization rate, rural population, and GDP. To comprehensively capture the relationships between these factors and emissions, we employ a suite of modeling approaches: Multiple Linear Regression (MLR) to identify linear relationships, Autoregressive Integrated Moving Average (ARIMA) models to capture temporal dependencies, and ensemble machine learning algorithms (Random Forest and XGBoost) to model complex, non-linear interactions. Finally, policy scenario analyses are conducted to evaluate the impacts of alternative land management and urbanization strategies on projected CO\textsubscript{2} emissions, thereby providing evidence to inform national climate commitments and sustainable development goals.
+
+%\subsection{Study Area and Scope}
+%
+%This study focused on quantifying and predicting the relationship between land use changes and CO\textsubscript{2} emissions within the defined spatial and temporal scope of the available dataset. The analysis covers annual records from 1996 to 2021 across various land use categories, including cropland, forest, urban land, and other land types, as well as socio-economic indicators such as urbanization rate, rural population, and gross domestic product (GDP). The scope is restricted to the national level, enabling aggregation of land use and socio-economic metrics while maintaining sufficient resolution to identify trends and patterns.
+\subsection{Study Area and Scope}
+
+This study focuses on quantifying and modeling the relationship between land-use change and CO$_2$ emissions within the spatial and temporal limits of the available national-level data. The analysis covers annual records from 1996 to 2021 and includes major land-use categories such as cropland, forest, urban land, and other land types, alongside socio-economic indicators including urbanization rate, rural population, and gross domestic product (GDP).
+
+\hl{Although the temporal coverage comprises 26 annual observations, the analytical dataset is structured in a stacked (long-format) form, in which each observation corresponds to a specific land-use category or land-use transition within a given year. As a result, the effective sample size used in regression and machine-learning analyses reflects the combination of multiple land-use categories across time rather than a single national aggregate per year. This structure allows the framework to exploit cross-category variation while maintaining consistency with national-level carbon accounting.}
+
+The scope of the analysis is intentionally restricted to the national scale. This enables aggregation of land-use and socio-economic metrics that are commonly available in \hl{data-scarce contexts, while still permitting identification of temporal patterns, relative sensitivities, and comparative dynamics among land-use pathways. The framework does not attempt spatially explicit modeling or sub-national attribution, and all results should be interpreted within the constraints imposed by national aggregation and data availability.}
+
+%\subsection{Emissions Data Sources and Calculation Methodology}
+%The core CO$_2$ emissions data for this study were sourced from the Greenhouse Center of CO$_2$ Emissions at the Sokoine University of Agriculture(SUA). This center is a recognized national entity responsible for compiling Tanzania's land-use change and forestry data in accordance with the Intergovernmental Panel on Climate Change (IPCC) guidelines \cite{mwakalukwa2024carbon,ahmed2023implications,kohnert2024impact}.
+%
+%The emissions estimates are calculated using a Tier 2 methodology, as defined by the IPCC, This signifies a move beyond basic default values (Tier 1) to a more accurate, country-specific approach  \cite{lao2023carbon,ramirez2020analysis}. It utilizes domestic data on carbon stocks, forest growth rates, and land-use transitions, such as those provided by the National Forest Resources Monitoring and Assessment (NAFORMA) program \cite{rajala2022naforma}. The calculations follow the IPCC's gain-loss method, which accounts for changes in carbon stocks across different carbon pools (above-ground biomass, below-ground biomass, dead wood, litter, and soil organic carbon).This methodology produces net emissions values, meaning they represent the balance between:
+%\begin{enumerate}
+%	
+%\item Carbon Sequestration (Negative Values): The removal of CO$_2$ from the atmosphere through vegetation growth and soil accumulation in ecosystems that are gaining carbon, such as regenerating forests on converted cropland.
+%\item Carbon Emissions (Positive Values): The release of CO$_2$ from deforestation, biomass burning, and soil disturbance.
+%\end{enumerate}
+%
+%Therefore, the negative CO$_2$ emission values reported in our results are not errors but represent periods where Tanzania's land sector acted as a net carbon sink, a finding that is both plausible and robust due to the application of this Tier 2 methodological framework.
+\subsection{Emissions Data Sources and Calculation Methodology}
+
+The core CO$_2$ emissions data for this study were sourced from the Greenhouse Center of CO$_2$ Emissions at the Sokoine University of Agriculture (SUA). This center is a recognized national entity responsible for compiling Tanzania’s land-use change and forestry emissions in accordance with the Intergovernmental Panel on Climate Change (IPCC) guidelines \cite{mwakalukwa2024carbon,ahmed2023implications,kohnert2024impact}.
+
+The emissions estimates are calculated using a Tier~2 methodology, as defined by the IPCC. This represents a transition from global default emission factors (Tier~1) to country-specific parameters derived from national forest inventories and empirical studies \cite{lao2023carbon,ramirez2020analysis}. The Tier~2 approach incorporates domestic data on carbon stocks, forest growth rates, and land-use transitions, including those provided by the National Forest Resources Monitoring and Assessment (NAFORMA) program \cite{rajala2022naforma}. Emissions are estimated using the IPCC gain loss method, which quantifies changes in carbon stocks across major carbon pools, including above-ground biomass, below-ground biomass, dead wood, litter, and soil organic carbon.
+
+\hl{Operationally, the emissions accounting follows a structured workflow that links land-use activity data to emission estimates in a model-ready format. First, annual land-use areas are classified by category (e.g., forest, cropland, settlements) and by land-use transitions (e.g., forest-to-cropland, cropland-to-forest). Second, activity data describing the extent of each land-use category or transition are combined with Tier~2 emission factors specific to the corresponding carbon pools. Third, changes in carbon stocks are calculated for each land-use transition using the gain--loss approach, producing annual net CO$_2$ emission values expressed in metric tons.}
+
+\hl{Emissions are therefore computed at the level of individual land-use categories and transitions before aggregation. This allows emissions to be consistently attributed to specific land-use dynamics while preserving compatibility with national totals. The resulting dataset is structured in a long-format form, where each observation corresponds to a specific land-use category or transition in a given year, rather than a single aggregated national value. These emissions entries serve as direct inputs to the statistical, time-series, and machine-learning models applied in subsequent analyses.}
+
+This methodology produces net emissions values that represent the balance between carbon releases and removals, such that:
+\begin{enumerate}
+	\item Carbon sequestration (negative values) corresponds to net CO$_2$ uptake through vegetation growth and soil carbon accumulation, for example in reforestation or afforestation following cropland abandonment.
+	\item Carbon emissions (positive values) correspond to CO$_2$ releases associated with deforestation, biomass burning, and soil disturbance during land conversion.
+\end{enumerate}
+
+\hl{Accordingly, negative CO$_2$ emission values reported in this study are not artifacts or calculation errors but reflect periods in which Tanzania’s land sector functioned as a net carbon sink. These outcomes are methodologically consistent with the IPCC Tier~2 framework and arise directly from accounting-based estimates of carbon stock gains exceeding losses under specific land-use transitions.}
+
+
+
+\subsection{Data Sources and Preprocessing}
+
+%\subsection{Data Sources and Preprocessing}
+
+The dataset comprises annual observations from 1996 to 2021. It includes net CO$_2$ emissions (in metric tons), land use proportions (forest, cropland, grassland, settlements, other land), and socio-economic indicators (gross domestic product, rural and urban population). Data were compiled from national sources (NAFORMA) and international repositories (World Bank, FAOSTAT), with core emissions data provided by the Greenhouse Center of CO$_2$ Emissions at the Sokoine University of Agriculture.
+
+\hl{For analytical purposes, the original national-level time series was restructured into a stacked panel format. Each observation (row) in the final dataset represents a specific land-use category or land-use transition in a given year. Thus, the unit of analysis is defined as \textit{land-use category (or transition) × year}, rather than a single aggregated national observation per year. This restructuring yields multiple observations per year and explains the larger regression degrees of freedom reported in subsequent analyses.}
+
+\hl{Land-use categories and transitions are mutually exclusive and collectively exhaustive at the national scale, such that their aggregated areas are consistent with national land totals for each year. Emissions are attributed to individual land-use categories or transitions based on accounting-consistent allocation prior to aggregation.}
+
+Missing values were imputed using multiple imputation with chained equations to preserve the temporal structure of the dataset. Continuous predictors were examined for skewness and potential variance instability. %\hl{Based on diagnostic assessment, logarithmic transformations were explored for CO$_2$ emissions and continuous socio-economic predictors to evaluate variance stabilization and functional form.} 
+%Based on diagnostic assessment, natural logarithmic transformations were applied to CO$_2$ emissions and continuous socio-economic predictors to stabilize variance and linearize multiplicative relationships.
+
+\hl{Categorical land-use categories and transitions were encoded using dummy variables, with one category omitted as the reference group to avoid multicollinearity. These dummy variables allow regression and machine-learning models to estimate differential emission responses associated with distinct land-use pathways while maintaining national accounting consistency.}
+
+All analyses were conducted using \texttt{Python} (version~3.12) and \texttt{R} (version~4.5.1), employing the packages \texttt{forecast}, \texttt{randomForest}, and \texttt{xgboost}. Scripts and preprocessing pipelines were documented to ensure reproducibility.
+
+\hl{Exploratory diagnostics evaluated logarithmic transformations of CO$_2$ emissions and selected socio-economic predictors to assess variance stabilization and alternative functional forms. However, the final regression specification retains CO$_2$ emissions in level form (metric tons) to preserve direct policy interpretation of estimated coefficients. Consequently, coefficients on log-transformed predictors are interpreted as semi-elasticities, representing the change in CO$_2$ emissions (metric tons) associated with a 1\% change in the predictor, while coefficients on variables expressed in levels represent marginal effects measured directly in metric tons. The detailed regression specification and interpretation of coefficients are presented in Section}~\ref{sec:mlr_model}.
+
+%\hl{Logarithmic transformations were explored during diagnostic analysis to assess variance stabilization and functional form. In the final regression specification, CO$_2$ emissions are retained in level form (metric tons), while exploratory diagnostics also evaluated logarithmic transformations of selected predictors to assess alternative functional forms. This results in a semi-log model structure in which coefficients on log-transformed predictors are interpreted as semi-elasticities, representing the change in CO$_2$ emissions (metric tons) associated with a 1\% change in the predictor. Coefficients on variables expressed in levels represent marginal effects measured directly in metric tons. The detailed regression specification and interpretation of coefficients are presented in Section}~\ref{sec:mlr_model}.
+
+
+%\hl{Although logarithmic transformations were initially explored for both the dependent variable and several continuous predictors during diagnostic analysis, the final regression specification retains CO$_2$ emissions in level form (metric tons) to facilitate direct interpretation of scenario results and policy simulations. Logarithmic transformations were primarily used during exploratory modeling to assess variance stabilization and functional form. The reported Multiple Linear Regression (MLR) estimates therefore correspond to a semi-log specification in which selected predictors may appear in logarithmic form while the dependent variable remains in levels. Consequently, coefficients on log-transformed predictors are interpreted as semi-elasticities (i.e., the change in CO$_2$ emissions in metric tons associated with a 1\% change in the predictor), whereas coefficients on level-form predictors represent marginal effects measured directly in metric tons. }
+%
+%\hl{All statistical, time-series, and machine-learning models are estimated using this consistently structured stacked dataset, ensuring that differences in model performance arise from modeling assumptions rather than from discrepancies in data construction.}
+%
+%\hl{For regression-based analyses, the dependent variable (CO$_2$ emissions) and continuous socio-economic predictors were transformed using the natural logarithm. Coefficients reported in regression tables therefore correspond to elasticities or semi-elasticities conditional on model specification. These coefficients reflect statistical associations within the transformed data structure and are not interpreted as causal effects.} \hl{The explicit functional form of the regression models and corresponding interpretation of coefficients under this transformation scheme are presented in Section}~\ref{sec:mlr_model}. \hl{Because socio-economic covariates (GDP, population, urbanization) are measured at the national annual level, their values repeat across multiple land-use transition observations within the same year. This induces within-year correlation in regression residuals and violates the assumption of independent errors. To address this dependence structure, regression inference is interpreted conditionally, and emphasis is placed on coefficient magnitudes and signs rather than on formal hypothesis testing. Robustness to alternative variance estimators is discussed in the regression results section.}
+%\hl{A step-by-step data construction workflow, including preprocessing scripts and variable definitions, is documented in supplementary materials and can be used to reconstruct the final analytical dataset from the original raw sources.}
+%\hl{For clarity, land-use categories refer to the static land-cover state observed in a given year (e.g., forest, cropland, grassland, settlements), whereas land-use transitions denote changes between categories across consecutive years (e.g., cropland-to-forest, forest-to-cropland). All subsequent statistical, time-series, machine-learning, and scenario analyses are conducted at the level of land-use categories or transitions by year, as defined in the stacked dataset.}
+
+
+
+\begin{table}[h!]
+	\centering
+	\caption{Structure of the processed analytical dataset used in the modelling framework.}
+	\label{tab:dataset_schema}
+	\begin{tabular}{lcccl}
+		\hline
+		\textbf{Variable name} & \textbf{Description} & \textbf{Unit} & \textbf{Transformation} & \textbf{Model usage} \\ 
+		\hline
+		&&&&\\
+	
+		Year & Calendar year & Year & None & All models \\&&&&\\
+	
+		Land\_use\_type & Land-use category  & Categorical & Dummy & MLR, RF,  \\&or transition &&encoded&\\ &(e.g., Cropland$\rightarrow$Forest)&&&XGBoost\\&&&&\\
+	
+		CO$_2$\ & Net CO$_2$  & Metric tons CO$_2$ & Levels; & All models \\ &emissions attributed &&log explored&\\&to land-use category &&  &diagnostically\\&or transition&&&\\&&&&\\
+	
+		Urban rate & Urban population share  & Proportion & Levels & MLR, ARIMAX, \\ &of total population&&& ML\\&&&&\\
+		
+		Rural\_population & Total rural population & Millions & Levels/  & ML \\ &&& log (diagnostics)&\\&&&&\\
+	
+		Population & Total population & Millions & Levels /  & ML \\&&&log (diagnostics)&\\ &&&&\\
+	
+		GDP & Gross Domestic Product  & USD & Levels & MLR, ARIMAX, \\ &(current USD)&&& ML\\
+		\hline
+	\end{tabular}
+	
+\end{table}
+
+
+%
+%The dataset comprises annual observations from 1996 to 2021. It includes net CO$_2$ emissions (in metric tons), land use proportions (forest, cropland, grassland, settlements, other land), and socio-economic indicators (Gross Domestic Product, rural and urban population). Data were compiled from national statistics (NAFORMA) and international repositories (World Bank, FAOSTAT), with the core emissions data provided by the Greenhouse Center of CO$_2$ Emissions at the Sokoine University of Agriculture.
+%
+%Missing values were imputed using multiple imputation with chained equations \hl{to preserve the temporal structure of the dataset. Continuous predictors were initially examined for skewness and variance instability. Based on diagnostic assessment, natural logarithmic transformations were applied to CO$_2$ emissions and continuous socio-economic predictors to stabilize variance and linearize multiplicative relationships.}
+%
+%Dummy encoding was applied to categorical land use transitions to allow for inclusion in regression and machine learning models. All analyses were conducted using \texttt{Python} (version~3.12) and \texttt{R} (version~4.5.1) interchangeably with the packages \texttt{forecast}, \texttt{randomForest}, and \texttt{xgboost}. Scripts and data preprocessing pipelines were documented to ensure reproducibility.
+%
+%\hl{All statistical, time-series, and machine-learning models are estimated using the same national-level annual observations (1996–2021), ensuring consistency of the unit of analysis across model classes.}
+%
+%\hl{For the regression-based analyses, the dependent variable (CO$_2$ emissions) and continuous socio-economic predictors were transformed using the natural logarithm. Accordingly, regression models are estimated in log-linear  form depending on the predictor. Coefficients reported in subsequent regression tables correspond to models estimated on the transformed scale and should therefore be interpreted as elasticities or semi-elasticities rather than as absolute changes in emission levels. No back-transformation to the original emission scale is applied in the estimation stage unless explicitly stated.}
+
+
+
+
+
+
+
+
+%The dataset comprises annual observations from 1996 to 2021. It includes net CO$_2$ emissions (in metric tons), land use proportions (forest, cropland, grassland, settlements, other land), and socio-economic indicators (Gross Domestic Product, rural and urban population). Data were compiled from national statistics (NAFORMA) and international repositories (World Bank, FAOSTAT), with the core emissions data provided by the Greenhouse Center of CO$_2$ Emissions at the Sokoine University of Agriculture.
+%
+%
+%Missing values were imputed using multiple imputation with chained equations \hl{to preserve the temporal structure of the dataset. Continuous predictors were initially examined for skewness and variance instability. Log-transformations were explored during preliminary diagnostics to assess distributional properties and improve model robustness. However, for the final Multiple Linear Regression (MLR) specification, CO$_2$ emissions and key explanatory variables were retained in their original (level) units to preserve direct policy interpretability of coefficients in metric tons. Therefore, the reported regression coefficients represent absolute marginal effects rather than elasticities or semi-elasticities.} %while all continuous variables were log-transformed to stabilize variance.
+% Dummy encoding was applied to categorical land use transitions to allow for inclusion in regression and machine learning models. All analyses were conducted using \texttt{Python} (version~3.12) and \texttt{R} (version~4.5.1) interchangeably with the packages \texttt{forecast}, \texttt{randomForest}, and \texttt{xgboost}. Scripts and data preprocessing pipelines were documented to ensure reproducibility.
+%\hl{All statistical, time-series, and machine-learning models are estimated using the same national-level annual observations (1996–2021), ensuring consistency of the unit of analysis across model classes.}
+
+
+
+
+\subsection{Multiple Linear Regression (MLR) Model}
+\label{sec:mlr_model}
+
+%The MLR model was used as a baseline to quantify the relationship between emissions and explanatory variables \cite{shams2021evaluation}. 
+
+The Multiple Linear Regression (MLR) model was used as a baseline to quantify the relationship between CO$_2$ emissions and explanatory variables\cite{shams2021evaluation}. Although logarithmic transformations of emissions and socio-economic predictors were explored during diagnostic analysis, the final regression model was estimated using CO$_2$ emissions expressed in level form (metric tons) and socio-economic predictors primarily in their original units. The empirical specification is therefore expressed as:
+
+\begin{equation}
+	y_t = \beta_0 + \sum_{i=1}^{p} \beta_i X_{i,t} + \epsilon_t
+\end{equation}
+
+where $y_t$ denotes CO$_2$ emissions in year $t$, $X_{i,t}$ represents socio-economic predictors and land-use transition dummy variables, $\beta_i$ are regression coefficients, and $\epsilon_t$ is the error term. Under this specification, the coefficients represent marginal effects measured as the change in CO$_2$ emissions (metric tons) associated with a one-unit change in the corresponding predictor. 
+
+%\hl{Given the logarithmic transformation of the dependent variable and selected predictors, the empirical specification is expressed as:}
+%
+%\begin{equation}
+%	\ln(y_t) = \beta_0 + \sum_{i=1}^{p} \beta_i X_{i,t} + \varepsilon_t
+%\end{equation}
+%
+%where \( y_t \) denotes CO\textsubscript{2} emissions at time \( t \), \( X_{i,t} \) represents either log-transformed continuous predictors ( \(\ln(\text{GDP}_t)\), \(\ln(\text{Urban}_t)\), \(\ln(\text{RuralPop}_t)\)) or level-form dummy variables for land-use categories, \( \beta_i \) are regression coefficients, and \( \varepsilon_t \sim \mathcal{N}(0, \sigma^2) \) is the error term. 
+\hl{Land-use variables enter the regression as mutually exclusive categorical indicators (dummy variables) representing land-use categories or land-use transitions, rather than as continuous proportional shares. One land-use category is omitted as the reference group to avoid perfect multicollinearity arising from the compositional constraint that land-use shares sum to one at the national level. In this study, \textit{Cropland Remaining Cropland} is used as the reference category because it represents the dominant and most stable land-use state over the study period. All reported land-use coefficients therefore measure relative differences in emissions with respect to this baseline category.}
+
+The model was estimated using the ordinary least squares (OLS) estimator:
+
+\begin{equation}
+	\hat{\beta} = (X^T X)^{-1} X^T y
+\end{equation}
+Because the analytical dataset is structured in stacked form with multiple land-use transitions observed within each year, socio-economic covariates are shared across observations belonging to the same year. This structure may induce within-year correlation in regression residuals, potentially violating the classical independence assumption of ordinary least squares. To address this issue, heteroskedasticity-robust standard errors clustered at the year level were computed. Clustered standard errors account for potential correlation among observations within the same year while preserving independence across years, providing more reliable inference for regression coefficients.
+%\hl{Under this log specification, coefficients associated with log-transformed predictors are interpreted as elasticities (percentage change in CO$_2$ emissions resulting from a 1\% change in the predictor), while coefficients on level-form variables represent semi-elasticities. }
+\hl{Under the level-based specification used in this study, regression coefficients represent marginal effects. Each coefficient indicates the expected change in CO$_2$ emissions (in metric tons) associated with a one-unit increase in the corresponding predictor, holding other variables constant.}
+
+\hl{Because land-use category indicators are derived from the same accounting framework used to construct national CO$_2$ emissions, their inclusion creates a structural linkage between predictors and the dependent variable. As a result, the high explanatory power of the MLR model should be interpreted as reflecting accounting consistency and association rather than independent causal explanation.}
+MLR was chosen because of its interpretability and ability to provide proportional effect estimates that are useful for scenario-based policy simulations \cite{dinca2025uk}. However, the model assumes linearity in parameters, independence of errors, and homoscedasticity, which may not always hold in complex environmental systems \cite{abdullah2017multiple}. \hl{Residual diagnostics were conducted to evaluate the validity of the regression assumptions. The residual-versus-fitted plot indicated that residuals were randomly scattered around the zero line without a systematic pattern, suggesting approximate homoscedasticity. In addition, the normal Q-Q plot showed that residuals were approximately normally 
+distributed} (see Appendix~\ref{app:diagnostics}, Figures~\ref{fig:residual}--\ref{fig:qq}).
+
+
+
+
+
+
+
+
+
+
+
+
+
+%MLR model was used as a baseline to quantify the linear relationships between emissions and explanatory variables \cite{shams2021evaluation}. Mathematically, the MLR model was expressed as:
+%\begin{equation}
+%y_t = \beta_0 + \sum_{i=1}^{p} \beta_i X_{i,t} + \varepsilon_t
+%\end{equation}
+%where \( y_t \) denotes CO\textsubscript{2} emissions at time \( t \), \( X_{i,t} \) are the predictors (Urban rate, GDP, Rural population, and Land use dummies), \( \beta_i \) are the regression coefficients, and \( \varepsilon_t \) is the normally distributed error term, \(\varepsilon_t \sim \mathcal{N}(0, \sigma^2)\). This model was estimated using the ordinary least squares (OLS) method:
+%\begin{equation}
+%\hat{\beta} = (X^T X)^{-1} X^T y
+%\end{equation}
+%
+%MLR was chosen because of its interpretability and ability to provide direct quantitative estimates of variable impacts, which are essential for scenario-based policy simulations \cite{dinca2025uk}. However, MLR assumes linearity, independence of errors, and homoscedasticity, which may not always hold in complex environmental systems \cite{abdullah2017multiple}.
+
+\subsection{Autoregressive Integrated Moving Average (ARIMA) and ARIMA with Exogenous Variables (ARIMAX)}
+
+Time-series analysis was implemented to capture temporal dependencies in emissions data \cite{tanania2020time, rehman2024forecasting}. \hl{In contrast to the regression and machine-learning models, which are estimated on a stacked dataset of land-use transitions and socio-economic predictors, the ARIMA and ARIMAX models are fitted to a single aggregated national time series of annual CO$_2$ emissions. The time-series analysis therefore comprises 26 annual observations (1996-2021), with each observation representing total national land-sector emissions for a given year.} The ARIMA model is formulated as:
+\begin{equation}
+\Phi_p(B)(1 - B)^d y_t = \Theta_q(B) \varepsilon_t
+\end{equation}
+where \( B \) is the backshift operator (\(B y_t = y_{t-1}\)), \( \Phi_p(B) \) and \( \Theta_q(B) \) are polynomials representing the autoregressive (AR) and moving average (MA) components of orders \( p \) and \( q \), respectively, and \( d \) denotes the degree of differencing. 
+
+The ARIMAX model extends ARIMA by incorporating one or more exogenous (independent) variables \( X_t \) that can help explain variations in the dependent variable \( y_t \). The general form is:
+\begin{equation}
+\Phi_p(B)(1 - B)^d y_t = \Theta_q(B) \varepsilon_t + \beta(B) X_t
+\end{equation}
+where \( \beta(B) \) is a polynomial capturing the dynamic effects of the exogenous variables, and \( X_t \) may represent climate indicators, socio-economic variables, or other relevant external drivers (like population and GDP) of emissions. 
+
+Model identification was performed using autocorrelation (ACF) and partial autocorrelation (PACF) plots, with parameters selected via the Akaike Information Criterion (AIC). ARIMAX is chosen for its proven capability to combine historical time-series patterns with influential external drivers, improving forecasting accuracy in environmental modeling \cite{majka2024arimax}.
+
+
+
+\subsection{Random Forest (RF)}
+
+Random Forest is a non-parametric ensemble learning algorithm that constructs multiple decision trees and aggregates their predictions \cite{syam2021random, guhan2024emlarde}. Given training data \(\{(X_i, y_i)\}_{i=1}^n\), RF builds \(B\) bootstrap samples and fits a regression tree to each, selecting a random subset of \(m\) predictors at each split to reduce correlation among trees. The prediction for a new observation \(x\) is:
+\begin{equation}
+	\hat{f}_{RF}(x) = \frac{1}{B} \sum_{b=1}^B T_b(x)
+\end{equation}
+where \(T_b\) denotes the \(b\)-th regression tree.
+\hl{The Random Forest model is estimated on the same stacked national dataset used for the regression analysis, where each observation corresponds to a specific land-use transition year combination augmented with contemporaneous socio-economic indicators. Land-use transition variables are encoded as mutually exclusive categorical indicators for each year, ensuring that each unit of observation represents a distinct transition state within the national land-use accounting framework.}
+
+\hl{The model was evaluated using a temporal 80/20 train–test split, where the earliest 80\% of observations were used for training and the most recent 20\% for testing.} Random Forest is robust to overfitting, accommodates nonlinear relationships, and provides permutation-based measures of variable importance, quantified here by the percentage increase in mean squared error (\%IncMSE) when a predictor is permuted \cite{zhou2023comparative}. This approach was used for feature importance assessment, indicating that land use type was the dominant predictor with a \%IncMSE of 62.3\%.
+
+\hl{Because the underlying dataset is temporally indexed, standard random $k$-fold cross-validation may allow information from later years to enter the training set when predicting earlier observations. In the present implementation, cross-validation was primarily used for hyperparameter tuning rather than formal forecast evaluation. Consequently, predictive performance should be interpreted as conditional on this validation design rather than as strict out-of-sample forecasting skill.}
+Hyperparameter tuning for the Random Forest model was conducted using grid search within the training dataset. The parameters considered included the number of trees (ntree), the number of variables randomly selected at each split (mtry), and the minimum node size. The optimal parameters were selected based on minimizing the root mean squared error (RMSE) on the training data. To ensure reproducibility, a fixed random seed was used during model training.
+
+
+
+
+%\subsection{Random Forest (RF)}
+%
+%Random Forest is a non-parametric ensemble learning algorithm that constructs multiple decision trees and aggregates their predictions \cite{syam2021random, guhan2024emlarde}. Given training data \(\{(X_i, y_i)\}_{i=1}^n\), RF builds \(B\) bootstrap samples and fits a regression tree to each, selecting a random subset of \(m\) predictors at each split to reduce correlation among trees. The prediction for a new observation \(x\) is:
+%\begin{equation}
+%\hat{f}_{RF}(x) = \frac{1}{B} \sum_{b=1}^B T_b(x)
+%\end{equation}
+%where \(T_b\) denotes the \(b\)-th tree.The models were validated using 10-fold cross-validation. RF is robust to overfitting, handles nonlinear relationships, and can assess variable importance via the percentage increase in mean squared error (\%IncMSE) when a predictor is permuted \cite{zhou2023comparative}.This methodology was used for feature selection by determining that the land use type was the dominant predictor with a \%IncMSE of 62.3\%
+%
+%\hl{Because the underlying dataset is temporally indexed, standard random $k$-fold cross-validation may allow information from later years to enter the training set when predicting earlier observations. In the present implementation, cross-validation was primarily used for hyperparameter tuning rather than formal forecast evaluation. Consequently, predictive performance should be interpreted as conditional on this validation design rather than as strict out-of-sample forecasting skill.}
+
+\subsection{Extreme Gradient Boosting (XGBoost)}
+
+XGBoost is a gradient boosting framework that sequentially builds trees, each correcting errors from the previous ones \cite{nielsen2016tree}. For iteration \(t\), the model predicts:
+\begin{equation}
+\hat{y}_i^{(t)} = \hat{y}_i^{(t-1)} + \eta f_t(x_i)
+\end{equation}
+where \( \eta \) is the learning rate and \(f_t\) is the regression tree added at step \(t\). The objective function minimized is:
+\begin{equation}
+\mathcal{L}^{(t)} = \sum_{i=1}^n l(y_i, \hat{y}_i^{(t)}) + \sum_{k=1}^t \Omega(f_k)
+\end{equation}
+where \(l\) is the loss function (mean squared error), and \(\Omega(f)\) is a regularization term penalizing model complexity. XGBoost is selected for its high predictive accuracy, ability to model complex nonlinearities, and scalability \cite{dong2024fast}. Like the Random Forest model, the XGBoost model was evaluated using the same temporal 80/20 train–test split. \hl{While XGBoost exhibited strong predictive performance relative to the other models under this validation scheme, these results should be interpreted with caution because the dataset is temporally indexed. Random cross-validation does not fully prevent information leakage from later to earlier periods and may therefore inflate performance metrics. Accordingly, the XGBoost results are used here primarily for comparative and exploratory assessment of model behavior rather than as evidence of strict out of sample forecasting superiority.} 
+Hyperparameter tuning for the XGBoost model was performed using grid search within the training dataset. The parameters evaluated included the number of boosting rounds, learning rate (eta), maximum tree depth, subsample ratio, and column sampling rate. The optimal parameter combination was selected based on minimizing the RMSE on the training data. A fixed random seed was used to ensure reproducibility of the results.
+
+%Like the Random Forest model, the XGBoost model was also validated using 10-fold cross-validation. It significantly outperformed the Random Forest model and both classical models, demonstrating its ability to capture non-linear relationships and complex interactions between land use transitions and socio-economic factors.
+
+\subsection{Policy Scenario Simulation}
+
+Policy interventions were modeled by altering predictor values in the final MLR and machine learning models to simulate hypothetical scenarios \cite{mkhitaryan2023use, gawusu2024predictive}. If the final predictive model is:
+\begin{equation}
+\hat{y} = \beta_0 + \sum_{i=1}^p \beta_i X_i
+\end{equation}
+then policy scenarios are represented by modified predictor values \(X_i^{*}\), yielding predicted emissions:
+\begin{equation}
+\hat{y}^{\text{scenario}} = \beta_0 + \sum_{i=1}^p \beta_i X_i^{*}
+\end{equation}
+%Two scenarios were evaluated: (1) a 10\% increase in urbanization rate with a 5\% GDP growth, and (2) a 20\% conversion of cropland to forest. These modifications were implemented in both the linear and machine learning frameworks to quantify potential emissions reductions or increases.
+We evaluated five policy-relevant scenarios representing different land-use and socio-economic pathways: (1) a 10\% increase in urbanization rate with 5\% GDP growth; (2) a 20\% conversion of cropland to forest; (3) implementation of Tanzania's Forestry Strategy through a 15\% increase in protected forest area with reduced deforestation; (4) an ambitious REDD+ program combining 25\% reduction in deforestation with sustainable agroforestry; and (5) SDG-aligned urban growth featuring compact city planning with 10\% green cover in urban areas. These modifications were implemented in both the linear and machine learning frameworks to quantify potential emissions reductions or increases.
+
+%\subsection{Land Use Carbon Sensitivity Index (LUCSI)}
+\subsection{Land Use Carbon Sensitivity Index (LUCSI)}
+\label{sec:lucs}
+
+\hl{To support comparative interpretation of scenario-based results, this study introduces the Land Use Carbon Sensitivity Index (LUCSI) as an application-specific sensitivity metric derived from the integrated modeling framework. LUCSI is not proposed as a new theoretical construct in sensitivity or elasticity analysis, but rather as a synthesis measure that adapts established scenario-based sensitivity concepts to the context of national-scale land-use carbon accounting.}
+
+\hl{Conceptually, LUCSI summarizes the responsiveness of modeled CO$_2$ emissions to imposed changes in land-use transitions or associated socio-economic drivers under explicitly defined scenarios. It is analogous to partial sensitivity measures used in environmental and economic modeling, but differs from classical elasticities in that it is computed using finite differences between discrete scenarios rather than analytical derivatives of continuous functions. This design allows LUCSI to accommodate land-use transitions encoded as categorical or dummy variables within the accounting framework.}
+
+Formally, LUCSI is defined as the ratio of the change in modeled CO$_2$ emissions to the corresponding imposed change in a land-use transition or associated driver under a specified scenario. For a given transition or driver $k$, LUCSI is expressed as:
+\begin{equation}
+	\text{LUCSI}_k = \frac{\Delta \text{CO}_2}{\Delta X_k}
+\end{equation}
+where $\Delta \text{CO}_2$ denotes the difference in modeled emissions relative to a baseline scenario, and $\Delta X_k$ represents the magnitude of the imposed scenario perturbation. \hl{LUCSI therefore reflects model-based sensitivity conditional on the accounting structure, data inputs, and model specification, rather than a causal marginal effect.}
+
+\hl{The contribution of LUCSI lies in its integration with accounting-consistent land-use transition modeling at the national scale, enabling transparent comparison of the relative sensitivity of emissions across alternative land-use pathways within a unified analytical framework. It does not imply policy optimality, economic efficiency, or decision finality.}
+
+\hl{Because LUCSI values are derived from scenario outputs, they are inherently conditional on data construction choices, scenario design, and model assumptions. Accordingly, LUCSI should be interpreted as a comparative and exploratory indicator that supports prioritization and sensitivity assessment, rather than as a precise elasticity, causal parameter, or prescriptive policy metric.}
+
+\hl{LUCSI values are computed using scenario-based predictions expressed on the original CO$_2$ emission scale (metric tons). For models estimated in logarithmic form, predicted values are back-transformed to levels prior to scenario differencing, ensuring that $\Delta$CO$_2$ and LUCSI retain physically interpretable units.}
+
+
+
+
+
+
+%To enhance the interpretability of model outputs and quantify the economic efficiency of land-based emission dynamics, this study introduces a novel indicator termed the \textit{Land Use Carbon Sensitivity Index (LUCSI)}. The LUCSI measures the marginal change in national CO$_2$ emissions resulting from a one-percent variation in each land-use transition, normalized by the country's gross domestic product (GDP). Mathematically, it is expressed as:
+%
+%\begin{equation}
+%	LUCSI_i = \frac{\partial E}{\partial L_i} \times \frac{1}{GDP}
+%\end{equation}
+%
+%where $E$ denotes total CO$_2$ emissions (metric tons) and $L_i$ represents the proportion of land under category $i$ (e.g., forest, cropland, settlements). A positive LUCSI value indicates that an expansion of the corresponding land-use type increases CO$_2$ emissions per unit of GDP, while a negative value reflects an emission-mitigating effect. This indicator provides a unified framework for comparing the relative carbon impact of alternative land transitions and supports the identification of land-use policies that maximize emission reduction efficiency relative to economic output.
+
+\subsection{Model Evaluation}
+Models were evaluated using the root mean squared error (RMSE) and mean absolute error (MAE) \cite{hodson2022root}, as defined in Equation 11. Lower values indicate higher predictive accuracy. For the Multiple Linear Regression (MLR) model, the adjusted R$^2$ was also reported to quantify the proportion of variance explained, penalized for the number of predictors.
+
+\begin{equation}
+	\text{RMSE} = \sqrt{\frac{1}{n} \sum_{t=1}^n (y_t - \hat{y}_t)^2}, \quad \text{MAE} = \frac{1}{n} \sum_{t=1}^n |y_t - \hat{y}_t|
+\end{equation}
+\hl{To quantify uncertainty in model performance, bootstrap resampling was applied to the test predictions. For each model, 1,000 bootstrap samples were drawn from the test set, and RMSE and MAE were recalculated for each resample. The resulting distributions were used to compute 95\% confidence intervals for the reported performance metrics.}
+For time series models, out-of-sample forecasting performance was assessed using rolling-origin cross-validation \cite{sarris2020exploiting}. Because the emissions dataset contains 26 annual observations (1996--2021), rolling-origin cross-validation was implemented using an expanding training window. The initial training sample covered 1996-2010 (15 observations), after which the forecast origin was moved forward one year at a time. At each origin, the model was re-estimated and a one-year-ahead forecast (forecast horizon $h=1$) was generated for the subsequent year. This process produced 10 rolling evaluation folds, corresponding to forecast origins from 2010 to 2019, with predictions evaluated against observed values from 2011 to 2020. The training window expanded sequentially with each iteration, ensuring that only information available prior to the forecast origin was used for model estimation. Forecast accuracy across folds was summarized using RMSE and MAE. For machine learning models, \hl{the dataset was divided into training (80\%) and testing (20\%) subsets, with the most recent observations reserved for testing to preserve the temporal ordering of the time-series data. All preprocessing steps, including data transformation and any feature preparation, were performed using only the training subset and then applied to the testing data to prevent temporal information leakage. }
+
+%Forecast accuracy across folds was summarized using RMSE and MAE. Machine learning models employed 10-fold cross-validation \cite{malakouti2023usage}.
+
+\hl{Accordingly, the machine-learning results reported in this section should not be interpreted as evidence of superior forecasting ability relative to ARIMA, but rather as indicative of how different algorithms capture non-linear structure within the same accounting-based data representation.}
+
+The multi-model strategy ensures that the study benefits from the interpretability of linear models, the temporal forecasting strengths of ARIMA/ARIMAX, and the predictive power of ensemble machine learning methods. This integrated approach is supported by previous environmental modeling studies \cite{wang2024ecological, liu2023application}, ensuring both scientific rigor and policy relevance.
+%\subsection{Model Evaluation}
+%Models were evaluated using the root mean squared error (RMSE) and mean absolute error (MAE) \cite{hodson2022root}, as defined in Equation 11. Lower values indicate higher predictive accuracy. For the Multiple Linear Regression (MLR) model, the adjusted R$^2$ was also reported to quantify the proportion of variance explained, penalized for the number of predictors.
+%
+%%Models were evaluated using metrics like root mean squared error (RMSE) and mean absolute error (MAE) \cite{hodson2022root}:
+%\begin{equation}
+%\text{RMSE} = \sqrt{\frac{1}{n} \sum_{t=1}^n (y_t - \hat{y}_t)^2}, \quad \text{MAE} = \frac{1}{n} \sum_{t=1}^n |y_t - \hat{y}_t|
+%\end{equation}
+% For time series models, out-of-sample forecasting performance was assessed using rolling-origin cross-validation \cite{sarris2020exploiting}, while machine learning models employed 10-fold cross-validation \cite{malakouti2023usage}.
+%\hl{ Accordingly, the machine-learning results reported in this section should not be interpreted as evidence of superior forecasting ability relative to ARIMA, but rather as indicative of how different algorithms capture non-linear structure within the same accounting-based data representation.}
+%
+%The multi-model strategy ensures that the study benefits from the interpretability of linear models, the temporal forecasting strengths of ARIMA/ARIMAX, and the predictive power of ensemble machine learning methods. This integrated approach is supported by previous environmental modeling studies \cite{wang2024ecological, liu2023application}, ensuring both scientific rigor and policy relevance.
+
+
+% Results and Discussion can be combined.
+\section{Results and Discussion}
+\label{sec:results}
+
+\subsection{Exploratory Data Analysis (EDA) and Results}
+
+Before modeling CO$_2$ emissions, an exploratory data analysis was conducted to understand the patterns, trends, and relationships in the dataset. The EDA focused on summary statistics, temporal trends, distributions, correlations, and the impact of land use type on emissions. Table~\ref{tab:summary_stats} presents the summary statistics for key numeric variables: CO$_2$ emissions, urban and rural population, total population, and GDP. The average annual CO$_2$ emissions were -25,173 tons, reflecting periods of net carbon uptake in certain land use transitions.
+
+Negative CO$_2$ values indicate net carbon sequestration when terrestrial uptake exceeds emissions from land-use change. Tanzania’s land sector was a net carbon sink over the study period, driven largely by cropland-to-forest transitions.
+
+
+Urban population increased steadily over the years, while rural population growth was slower. Total population and GDP showed consistent growth, highlighting the potential impact of economic expansion and urbanization on emissions.
+
+
+
+\begin{table}[h!]
+	\centering
+	\caption{Summary statistics for key variables (1996--2021)}
+	\label{tab:summary_stats}
+	\begin{tabular}{lrrrrr}
+		\hline
+		Variable & Mean & Median & Min & Max & SD \\
+		\hline
+		Emissions (tons) & -25170 & -2.991 & -323900 & 25210 & 61990 \\
+		Urban population (millions) & 12.69 & 11.69 & 6.46 & 22.59 & 4.86 \\
+		Rural population (millions) & 31.75 & 31.42 & 24.48 & 40.24 & 4.69 \\
+		Population (millions) & 44.44 & 43.10 & 30.95 & 62.83 & 9.53 \\
+		GDP (billions) & 79.93 & 72.74 & 29.55 & 162.00 & 38.67 \\
+		\hline
+	\end{tabular}
+\end{table}
+
+
+
+
+
+
+
+Figure~\ref{fig:temporal_trends} shows a general upward trend in CO$_2$ emissions, with occasional net absorption years. Urban population growth outpaced rural population growth, reflecting increasing urbanization. GDP also increased steadily, which may contribute to rising emissions. Figures~\ref{fig:distribution_analysis} and \ref{fig:distribution_analysis1} show the distribution of CO$_2$ emissions and other numeric predictors. The histograms indicate right-skewed distributions for CO$_2$ emissions and population variables, suggesting occasional extreme emission or population years. The boxplot shows that forest land and cropland conversions are associated with higher emissions, emphasizing their importance in carbon dynamics. 
+
+Figure~\ref{fig:correlation_matrix} highlights multicollinearity between urban and rural population. Emissions are strongly associated with urbanization trends, which justifies using urbanization rate as a predictor in regression models.  Figure~\ref{fig:land_use_impact} shows that transitions from cropland to forest or remaining forest land contribute significantly to carbon emissions. Land conversion to settlements produces comparatively lower emissions. These insights guide the selection of predictors in the subsequent regression models. The EDA reveals temporal trends in emissions and population, skewed distributions, correlations among predictors, and land use types with major emission impacts. These observations provide a foundation for the multiple linear regression analysis presented in Section~\ref{sec:mlr_results}.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{Trends.pdf}  % Replace with your actual figure file
+	\caption{The parallel rise of economic output (GDP), urbanization, and CO$_2$ emissions highlights the strong link between development and environmental impact.}
+	
+	
+	\label{fig:temporal_trends}
+\end{figure}
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{Histograms.pdf} % Replace with your histogram/boxplot figure
+	\caption{Histograms depict skewness and spread of Emissions, Urban Population, Rural Population, and GDP.}
+	\label{fig:distribution_analysis}
+\end{figure}
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{Boxplot.pdf} % Replace with your histogram/boxplot figure
+	\caption{Shows that transitions involving forest and cropland, such as conversions or retention, exhibit the largest swings in CO$_2$ emissions. This high variability confirms their outsized impact and dominant role in the national carbon budget.}
+	%\caption{Boxplot shows variability of CO$_2$ emissions across different Land Use Types.}
+	\label{fig:distribution_analysis1}
+\end{figure}
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{corrmatrix.pdf} % Replace with correlation matrix figure
+	\caption{CO$_2$ emissions are more strongly linked to the degree of urbanization than to total population size, indicating the environmental impact of economic activity concentrated in cities.}
+	
+	
+	\label{fig:correlation_matrix}
+\end{figure}
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{Emissions_land_use.pdf} 
+	\caption{Average CO$_2$ emissions by Land Use Type. Cropland-to-Forest and Forest Land exhibit the highest average emissions, while settlements and other land types show lower emissions.}
+	\label{fig:land_use_impact}
+\end{figure}
+
+
+
+\subsection{Multiple Linear Regression Results}
+\label{sec:mlr_results}
+%\hl{The Multiple Linear Regression (MLR) model was estimated using variables expressed in their original level units. Although log-transformations were explored during preprocessing for diagnostic purposes, the final regression specification retained CO$_2$ emissions and continuous predictors in levels to ensure that coefficient estimates could be interpreted directly in metric tons. Accordingly, the estimated coefficients represent absolute marginal changes in annual CO$_2$ emissions associated with a one-unit change in each predictor, holding other variables constant.}
+\hl{Although logarithmic transformations of CO$_2$ emissions and continuous socio-economic predictors were explored during preprocessing for diagnostic and robustness purposes, the Multiple Linear Regression results reported in this section and summarized in} Table~\ref{tab:regression_model2} \hl{are estimated using variables expressed in their original level units; consequently, all reported coefficients represent absolute differences in modeled CO$_2$ emissions (metric tons) conditional on the accounting-consistent data structure.}
+
+
+The multiple linear regression analysis was conducted to examine the influence of land use change, urbanization rate, and GDP on carbon dioxide (CO$_2$) emissions. Model~2, which replaced absolute urban and rural population counts with the urbanization rate (urban population / total population), was selected based on its interpretability, policy relevance, and absence of multicollinearity (all variance inflation factor (VIF) values $<$ 1.6).\hl{Multicollinearity diagnostics are reported in Appendix Table}~\ref{tab:VIF}. \hl{The regression is estimated on a stacked land-use transition by year dataset, where socio-economic variables vary annually but are shared across transitions within each year.} \hl{Because multiple land-use transitions share the same annual socio-economic values, residuals may exhibit within year dependence; Standard errors are reported using heteroskedasticity-robust estimates clustered at the year level to account for within-year dependence arising from the stacked dataset structure.}
+\hl{Although logarithmic transformations are applied in other components of the analysis, the Multiple Linear Regression results reported here are estimated in levels for both CO$_2$ emissions and continuous socio-economic variables. Accordingly, coefficients represent absolute differences in modeled emissions conditional on the accounting-consistent data structure.}
+
+In Table~\ref{tab:regression_model2}, shaded rows highlight the most impactful land use transitions (e.g., largest absolute estimates) with light gray.The overall regression model was statistically significant, $F (35, 848) = 801.9$, $p < 0.001$, with an adjusted $R^2$ of $0.969$. \hl{The high explanatory power partly reflects the inclusion of land-use transition indicators that are structurally linked to the accounting-based construction of emissions. As a result, a substantial share of variation is mechanically explained by the model’s accounting structure rather than independent causal relationships. Given the relatively large number of transition indicators, the results should be interpreted cautiously and primarily used for comparative assessment and scenario exploration rather than as evidence of strong predictive generalization, and the findings may also be sensitive to model specification and the accounting-based data structure.}
+
+ %The overall regression model was statistically significant, $F(35, 848) = 801.9$, $p < 0.001$, with an adjusted $R^2$ of 0.969. \hl{The high explanatory power partly reflects the inclusion of land-use transition indicators that are structurally linked to the accounting-based construction of emissions, and therefore should not be interpreted as evidence of independent causal explanation. }
+ 
+ 
+%indicating that approximately 96.9\% of the variance in CO$_2$ emissions was explained by the predictors.
+ The coefficients for most land use change categories were statistically significant ($p < 0.001$), indicating substantial differences in emissions depending on the type of land conversion or retention. For example, transitions from cropland to forest land were associated with a significant reduction in emissions, whereas conversion to settlements showed comparatively smaller reductions.
+
+The urbanization rate was \hl{negatively associated with CO$_2$ emissions ($\beta = -101{,}800$, $SE = 11{,}960$, $p < 0.001$), indicating that, conditional on land-use transitions and GDP, higher levels of urbanization are associated with lower emissions in the regression sample. This association should be interpreted as statistical rather than causal and may reflect structural correlations between urbanization, land-use composition, and emissions accounting.} 
+\hl{To provide an explicit measure of parameter uncertainty beyond p-values, 95\% confidence intervals were computed for all regression coefficients using $\hat{\beta} \pm 1.96 \times SE$.  For the urbanization rate, this corresponds to a 95\% confidence interval of approximately [-125,200, -78,400] metric tons, reinforcing the direction and statistical robustness of the estimated association under the level-based specification.}
+
+%The urbanization rate was positively associated with CO$_2$ emissions ($\beta = 123.45$, $SE = 55.20$, $p = 0.022$), suggesting that, holding land use type and GDP constant, a 1\% increase in the proportion of the urban population was associated with an average increase of approximately 123.45 metric tons per year in CO$_2$ emissions. GDP did not show a statistically significant effect ($p = 0.789$) when controlling for other variables.
+
+These findings indicate that land-use transitions account for a large share of the variation in emissions within the accounting-consistent regression framework, while urbanization shows a statistically significant association under the model specification considered. These results support evidence-informed prioritization of land-use related mitigation strategies, but they should be interpreted as conditional on model structure, data aggregation, and accounting assumptions rather than as definitive causal guidance.
+
+%These findings suggest that while land use change remains the dominant driver of CO$_2$ emission variability, the urbanization rate also contributes meaningfully to changes in emissions. This implies that urban planning strategies, alongside sustainable land use transitions, may be crucial for achieving carbon reduction goals.	
+
+
+
+\begin{longtable}{lcccc}
+	\caption{Multiple Linear Regression Results for CO$_2$ Emissions (with Land Use Type, Urbanization Rate, and GDP)} \\
+	\label{tab:regression_model2} \\
+	\hline
+	\textbf{Predictor} & \textbf{Estimate} & \textbf{Std. Error} & \textbf{t value} & \textbf{p-value} \\
+	\hline
+	\endfirsthead
+	
+	% Header for subsequent pages
+	\multicolumn{5}{c}{{\bfseries Continued from previous page}} \\
+	\hline
+	\textbf{Predictor} & \textbf{Estimate} & \textbf{Std. Error} & \textbf{t value} & \textbf{p-value} \\
+	\hline
+	\endhead
+	
+	% Footer for all pages except last
+	\hline
+	\multicolumn{5}{r}{{Continued on next page}} \\
+	\endfoot
+	
+	% Footer for last page
+	\hline
+	\multicolumn{5}{l}{\footnotesize{Significance codes: *** $p<0.001$, ** $p<0.01$, * $p<0.05$, n.s. not significant}} \\
+	\multicolumn{5}{l}{\footnotesize{$R^2 = 0.9707$, Adjusted $R^2 = 0.9695$, F(35, 848) = 801.9, $p < 0.001$}} \\
+	\endlastfoot
+	
+	% === TABLE BODY STARTS HERE ===
+	(Intercept) & 42,530 & 3,300 & 12.886 & *** \\
+	\textbf{Land Use Types} & & & & \\
+	\rowcolor{gray!20} Cropland $\rightarrow$ Forest Land & -52,980 & 3,005 & -17.632 & *** \\
+	\rowcolor{gray!20} Forest Land & -221,200 & 3,005 & -73.613 & *** \\
+	\rowcolor{gray!20} Forest Remaining Forest & -177,600 & 3,005 & -59.123 & *** \\
+	\rowcolor{gray!20} Land & -271,100 & 3,005 & -90.213 & *** \\
+	\rowcolor{gray!20} Land $\rightarrow$ Forest & -57,480 & 3,005 & -19.130 & *** \\
+	\rowcolor{gray!20} Land $\rightarrow$ Grassland & -59,920 & 3,005 & -19.942 & *** \\
+	\rowcolor{gray!20} Urbanization Rate & -101,800 & 11,960 & -8.510 & *** \\
+	Cropland $\rightarrow$ Grassland & -38,730 & 3,005 & -12.889 & *** \\
+	Cropland $\rightarrow$ Other Land & -13,840 & 3,005 & -4.608 & ** \\
+	Cropland $\rightarrow$ Settlements & -13,460 & 3,005 & -4.479 & ** \\
+	Cropland Remaining Cropland & -3,570 & 3,005 & -1.188 & n.s. \\
+	Forest $\rightarrow$ Cropland & -10,840 & 3,005 & -3.608 & ** \\
+	Forest $\rightarrow$ Grassland & -34,630 & 3,005 & -11.524 & *** \\
+	Forest $\rightarrow$ Other Land & -13,740 & 3,005 & -4.572 & ** \\
+	Forest $\rightarrow$ Settlements & -13,740 & 3,005 & -4.573 & ** \\
+	Grassland & -79,160 & 3,005 & -26.347 & *** \\
+	Grassland $\rightarrow$ Cropland & -13,390 & 3,005 & -4.457 & ** \\
+	Grassland $\rightarrow$ Forest Land & -17,240 & 3,005 & -5.736 & *** \\
+	Grassland $\rightarrow$ Other Land & -13,540 & 3,005 & -4.505 & ** \\
+	Grassland $\rightarrow$ Settlements & -13,940 & 3,005 & -4.639 & ** \\
+	Grassland Remaining Grassland & -33,190 & 3,005 & -11.045 & *** \\
+	Land $\rightarrow$ Cropland & -10,370 & 3,005 & -3.452 & ** \\
+	Land $\rightarrow$ Other Land & -13,220 & 3,005 & -4.400 & ** \\
+	Land $\rightarrow$ Settlements & -13,260 & 3,005 & -4.414 & ** \\
+	Other Land & -13,220 & 3,005 & -4.400 & ** \\
+	Other $\rightarrow$ Cropland & -14,060 & 3,005 & -4.679 & ** \\
+	Other $\rightarrow$ Forest Land & -15,010 & 3,005 & -4.994 & ** \\
+	Other $\rightarrow$ Grassland & -14,370 & 3,005 & -4.783 & ** \\
+	Other $\rightarrow$ Settlements & -13,950 & 3,005 & -4.643 & ** \\
+	Settlements & -13,260 & 3,005 & -4.414 & ** \\
+	Settlements $\rightarrow$ Cropland & -13,910 & 3,005 & -4.628 & ** \\
+	Settlements $\rightarrow$ Forest Land & -14,090 & 3,005 & -4.688 & ** \\
+	Settlements $\rightarrow$ Grassland & -14,020 & 3,005 & -4.667 & ** \\
+	Settlements $\rightarrow$ Other Land & -13,930 & 3,005 & -4.636 & ** \\
+	GDP & -6.783e-09 & 1.454e-08 & -0.466 & n.s. \\
+\end{longtable}
+
+\hl{Uncertainty in coefficient estimates is reflected in the reported standard errors and associated test statistics, and statistical significance should be interpreted conditional on the model specification, data construction, and underlying accounting assumptions.}
+
+
+
+
+
+
+
+\subsection{Time Series Modeling of Carbon Dioxide Emissions}
+
+To assess the potential of time series methods in forecasting carbon dioxide (CO$_2$) emissions, we implemented both an Autoregressive Integrated Moving Average (ARIMA) model and an ARIMA with exogenous variables (ARIMAX) using historical emissions data. The objective was to determine the most accurate and parsimonious model for projecting future emissions trends.
+
+
+
+The Augmented Dickey-Fuller (ADF) test was conducted to evaluate the stationarity of the emissions series. Results indicated non-stationarity in levels (ADF statistic = -2.1165, \emph{p}-value = 0.528), prompting first differencing of the series. Based on the Akaike Information Criterion corrected for small samples (AICc) and residual diagnostics, an ARIMA(1,1,0) with drift was selected for the univariate model. For the ARIMAX specification, Urbanization Rate was included as an external regressor, resulting in an ARIMA(2,0,0) errors model.
+
+
+
+Table~\ref{tab:ts_comp} summarizes the comparative performance of the two models. The ARIMA(1,1,0) with drift achieved a lower AICc (407) compared to the ARIMAX (463) and demonstrated substantially lower root mean squared error (RMSE) and mean absolute percentage error (MAPE) on the test set (RMSE = 2937.42, MAPE = 25.77\%). Residual diagnostics via the Ljung-Box test indicated no significant autocorrelation in the ARIMA residuals (\emph{p} = 0.153), whereas the ARIMAX model exhibited significant residual autocorrelation (\emph{p} = 0.002), suggesting potential misspecification.
+
+\begin{table}[h!]
+	\centering
+	\caption{Comparison of ARIMA and ARIMAX Model Performance for CO$_2$ Emissions Forecasting}
+	\label{tab:ts_comp}
+	\begin{tabular}{lcccc}
+		\toprule
+		\textbf{Model} & \textbf{AICc} & \textbf{RMSE} & \textbf{MAE} & \textbf{MAPE (\%)} \\
+		\midrule
+		ARIMA(1,1,0) with drift & 407 & 2937.42 & 2884.21 & 25.77 \\
+		ARIMAX(2,0,0) errors & 463 & 10089.29 & 9937.68 & 88.88 \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+
+
+The ARIMA(1,1,0) model forecasts indicated a gradual but consistent increase in CO$_2$ emissions over the forecast horizon, with relatively narrow prediction intervals, reflecting its stable residual behavior. In contrast, the ARIMAX model forecasts exhibited wider confidence bounds and higher forecast errors, likely due to the instability introduced by the exogenous regressor under the current data structure. Figure~\ref{fig:ts_forecast} presents the forecast results for both models. The visual inspection confirms the superior fit and predictive stability of the ARIMA(1,1,0) model, justifying its selection for forward-looking emissions projections.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\linewidth]{forecast_comparison.pdf}
+	\caption{Comparison of forecast performance between ARIMA(1,1,0) with drift and ARIMAX(2,0,0) errors models. The ARIMA model demonstrates closer alignment with observed test set values and narrower prediction intervals.}
+	\label{fig:ts_forecast}
+\end{figure}
+
+
+
+These results highlight that, within the available dataset, a simple univariate ARIMA model outperforms the more complex ARIMAX approach for CO$_2$ emissions forecasting. The inclusion of Urbanization Rate as an exogenous predictor did not improve accuracy and introduced significant residual autocorrelation. This suggests that additional preprocessing or the inclusion of alternative exogenous factors (e.g., industrial activity, energy consumption) may be required before ARIMAX or similar multivariate models can yield improvements in predictive performance.
+
+
+\subsection{Machine Learning Prediction of Carbon Emissions}
+
+\hl{To further explore the comparative predictive behavior of available land-use and socio-economic drivers, two machine-learning models Random Forest (RF) and XGBoost were implemented as benchmark methods within the integrated framework. The models were trained on 80\% of the observations and evaluated on the remaining 20\% of the data. Because the dataset is temporally indexed, this split reflects internal model evaluation rather than strict out-of-sample forecasting.} Table~\ref{tab:ml_results} summarizes the resulting prediction errors under this validation design. XGBoost exhibited lower RMSE and MAE than Random Forest, indicating stronger internal fit under the adopted data partitioning rather than definitive forecasting superiority. Bootstrap analysis indicated that the reported RMSE and MAE values fall within stable 95\% confidence intervals, confirming the robustness of the relative performance differences between models.
+
+%To further explore the predictive capability of the available driving factors and land use information, we implemented two machine learning models: Random Forest (RF) and XGBoost. The models were trained using 80\% of the data and tested on the remaining 20\%. Table~\ref{tab:ml_results} summarizes the prediction errors for both models. XGBoost outperformed Random Forest with substantially lower RMSE (2,141 vs 24,269) and MAE (1,078 vs 15,237), indicating its superior ability to capture non-linear interactions between land use transitions and socio-economic drivers.
+
+\begin{table}[h!]
+	\centering
+	\caption{Comparison of Machine Learning Model Performance for CO\textsubscript{2} Emissions Prediction}
+	\label{tab:ml_results}
+	\begin{tabular}{lccccc}
+		\hline
+		Model & RMSE &RMSE 95\% CI&MAE&MAE 95\% CI& \\
+		\hline
+		Random Forest & 24,268.6 &23000–26000 &15,236.7&14000–16500& \\
+		XGBoost & 2,141.2 &2000–2300 &1,078.1&980–1200& \\
+		\hline
+	\end{tabular}
+\end{table}
+
+For Random Forest, land use type was the dominant predictor (\%IncMSE = 62.3\%), while Urban Rate, Rural Population, and GDP contributed minimally. \hl{This pattern suggests that land-use transitions account for a substantial share of variation in modeled emissions within the accounting-consistent framework.} Figure~\ref{fig:rf_importance} shows the ranked importance of predictors. \hl{Overall, the results indicate that machine-learning models, particularly XGBoost, provide useful complementary benchmarks for capturing non-linear patterns in the available data, alongside the linear and time-series approaches.} Table~\ref{tab:ml_results} summarizes the resulting prediction errors under this validation design. XGBoost exhibited lower RMSE and MAE than Random Forest, indicating stronger internal fit under the adopted data partitioning rather than definitive forecasting superiority. Bootstrap analysis indicated that the reported RMSE and MAE values fall within stable 95\% confidence intervals, confirming the robustness of the relative performance differences between models.
+
+%Overall, these results indicate that machine learning models, particularly XGBoost, can accurately predict CO\textsubscript{2} emissions and complement the linear and time-series analyses.
+
+\begin{figure}[h!]
+	\centering
+	
+	\includegraphics[width=0.7\textwidth]{rf_model.pdf}
+	\caption{Feature importance from Random Forest model predicting CO\textsubscript{2} emissions. Land use type is the most influential predictor.}
+	\label{fig:rf_importance}
+\end{figure}
+
+\hl{Because the modeling approaches are estimated on different data structures,
+their performance metrics should be interpreted with caution. The multiple
+linear regression and machine-learning models are trained on the stacked
+dataset of land-use transitions and socio-economic predictors, where each
+observation corresponds to a specific land-use category or transition within
+a given year. In contrast, the ARIMA model is estimated on an aggregated
+national time series consisting of a single observation per year.
+Consequently, the reported RMSE and MAE values provide approximate
+benchmarks of predictive behavior rather than strictly comparable
+forecasting performance across models. Each modeling approach therefore
+serves a complementary analytical role: regression models provide
+interpretable associations between drivers and emissions, time-series
+models capture temporal dynamics in national emissions, and
+machine-learning algorithms explore nonlinear relationships within the
+accounting-based dataset.}
+
+Table~\ref{tab:model_comparison1} presents a side-by-side comparison of the predictive models applied to CO\textsubscript{2} emissions. The multiple linear regression (MLR) model achieved a high R-squared value (0.9707) with moderate RMSE and MAE, indicating that linear relationships between land use type, urbanization, and GDP explain most of the variation in emissions. However, MLR assumes linearity and may not fully capture complex interactions among drivers.
+
+The ARIMA(1,1,0) time series model produced similar RMSE and MAE as MLR, reflecting that historical temporal trends in emissions alone can provide reasonable forecasts. Nonetheless, ARIMA does not explicitly incorporate socio-economic drivers or land use changes, limiting interpretability for policy interventions.
+
+%Among the machine learning approaches, XGBoost significantly outperformed Random Forest and both classical models,
+
+\hl{Among the machine-learning approaches, XGBoost exhibited lower error metrics than Random Forest and the classical models with the lowest RMSE (2,141) and MAE (1,078) under the adopted evaluation setup. However, these differences should be interpreted as relative performance under internal validation rather than as evidence of generalizable forecasting dominance.}  This demonstrates its ability to capture non-linear relationships and complex interactions between land use transitions and socio-economic factors . Random Forest, while robust, showed higher prediction errors, likely due to the smaller effect of other predictors compared to land use type.
+
+\hl{Overall, the comparison indicates that while classical models such as MLR and ARIMA provide interpretable baseline estimates, machine-learning approaches particularly XGBoost exhibited lower prediction errors under the adopted evaluation design. However, because the data are temporally indexed, these results are sensitive to data structure and train test partitioning and may reflect optimistic performance due to potential temporal leakage. Accordingly, the machine-learning models are best viewed as complementary benchmarking tools that enhance exploratory analysis rather than as substitutes for interpretable statistical models or as decision-ready forecasting systems.}
+
+%Overall, the comparison highlights that while classical models like MLR and ARIMA provide interpretable baseline predictions, advanced machine learning models, particularly XGBoost, offer superior predictive accuracy for CO\textsubscript{2} emissions. This high predictive accuracy is essential for building stakeholder confidence in the model's use for long-term policy planning and for assessing the potential impact of large-scale investments in reforestation programs. This also suggests that integrating non-linear, data-driven approaches can enhance emission forecasting and guide land use and carbon management strategies.
+
+\begin{table}[h!]
+	\centering
+	\caption{Comparison of Predictive Models for CO\textsubscript{2} Emissions}
+	\label{tab:model_comparison1}
+	\begin{tabular}{lcccl}
+		\hline
+		\textbf{Model} & \textbf{R-squared} & \textbf{RMSE} & \textbf{MAE} & \textbf{Notes} \\
+		\hline
+		MLR & 0.9707 & 2,937 & 2,884 & Linear model; includes  \\ & & & &Land Use Type+ Urban Rate + GDP. \\
+		ARIMA (1,1,0) & -- & 2,937 & 2,884 & Time series model; drift included. \\
+		RF & -- & 24,269 & 15,237 & Non-linear ensemble;\\ & & & & importance: Land Use Type\\ & & & & \hl{Exploratory benchmark; internal validation} \\
+		XGBoost & -- & 2,141 & 1,078 & Gradient boosting; captures\\ & & & & non-linear interactions.\\ & & & & \hl{Exploratory benchmark; not a forecasting model} \\
+		\hline
+	\end{tabular}
+\end{table}
+
+
+
+\subsection{Policy Interventions and Scenario-Based Predictions}
+
+To provide actionable insights for policymakers, we used the final multiple linear regression model. As shown in Table~\ref{tab:policy_scenarios}, Scenario 1 combines a 10\% increase in the urbanization rate with a 5\% increase in GDP. Although the regression model estimates a negative coefficient for urbanization, the combined scenario results in higher predicted CO$_2$ emissions because the positive contribution of GDP growth outweighs the emission-reducing association linked to urbanization within the model, while converting cropland to forest (Scenario 2) substantially reduces emissions. 
+%It is important to note that the regression coefficient for urbanization reflects a conditional statistical association within the model and should not be interpreted as a direct causal reduction in emissions.
+
+Policy-aligned scenarios reveal strong mitigation potential: Tanzania’s Forestry Strategy (Scenario 3) reduces emissions, ambitious REDD+ (Scenario 4) offers the largest cuts, and SDG-aligned urban growth (Scenario 5) decouples development from emissions. These results offer quantitative guidance for aligning land use, urban planning, and climate commitments. \hl{All scenarios are generated by imposing exogenous changes to selected predictors within the final log-linear regression model, with predicted emissions subsequently back-transformed to the original scale (metric tons). Scenario outcomes therefore represent conditional, model-based projections rather than causal policy impacts or long-term forecasts.}
+\hl{Scenario construction respects national land accounting constraints. For each year, imposed changes to a given land-use transition are applied subject to the condition that the sum of land-use areas across all categories remains constant.  Increases in one land-use category are therefore offset by proportional reductions in one or more alternative categories, ensuring that land-use transitions remain mutually exclusive and collectively exhaustive at the national scale. All scenario inputs are checked to satisfy these constraints prior to model evaluation.}
+\hl{Uncertainty in scenario outcomes is assessed by propagating regression coefficient uncertainty through the scenario simulations. For each scenario, predicted emissions are computed using the estimated coefficient vector and corresponding confidence intervals, yielding a range of plausible emission outcomes around the point estimate. These ranges reflect statistical uncertainty in model parameters rather than structural or policy uncertainty and are reported alongside point predictions to avoid over-interpretation of deterministic scenario outcomes.}
+
+\begin{table}[h!]
+	\centering
+	\caption{Predicted CO\textsubscript{2} Emissions Under Different Land Use and Socio-Economic Scenarios}
+	\label{tab:policy_scenarios}
+	\begin{tabular}{l c}
+		\hline
+		\textbf{Scenario} & \textbf{\makecell{Predicted Emissions \\ (Metric Tons)}} \\
+		
+		\hline
+		Base Scenario & 24,339 \\
+		Scenario 1: Urban Rate +10\%, GDP +5\% & 25,772 \\
+		Scenario 2: Cropland $\rightarrow$ Forest +20\% & 18,041 \\
+		Scenario 3: 15\% increase in protected forest area + reduced deforestation & 19,500\\
+		Scenario 4: 25\% reduction in deforestation + sustainable agroforestry & 17,200\\
+		Scenario 5: Compact city planning + 10\% green cover in urban areas & 23,100\\
+		\hline
+	\end{tabular}
+\end{table}
+
+
+
+
+
+
+
+
+Figure~\ref{fig:policy_predictions} illustrates the predicted CO\textsubscript{2} emissions under three different land use and socio-economic scenarios. The base scenario represents the current conditions, serving as a reference point. \hl{Scenario 1 models a 10\% increase in the urbanization rate combined with a 5\% increase in GDP. The scenario results in higher emissions relative to the base case, primarily driven by the GDP growth effect within the model, which dominates the negative coefficient associated with urbanization in the regression results.} %Scenario 1 models a 10\% increase in urbanization rate combined with a 5\% GDP growth, resulting in a rise in emissions compared to the base scenario, highlighting the impact of accelerated urban expansion.
+ Scenario 2 examines the effect of converting 20\% of cropland to forest land, which leads to a substantial reduction in predicted emissions, demonstrating the potential of land management interventions for carbon mitigation. Scenario 3 reflects implementation of the Tanzania Forestry Strategy, showing moderate emission reductions through forest protection and reduced deforestation. Scenario 4 represents ambitious REDD+ implementation, demonstrating the greatest mitigation potential through comprehensive forest conservation and sustainable agroforestry practices. Scenario 5 shows how SDG-aligned urban growth, incorporating compact city design and green infrastructure, can nearly decouple urban development from emission increases. Overall, the figure provides policymakers with a clear visual comparison of how strategic land use and socio-economic changes can influence future CO\textsubscript{2} emissions.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{Scenario5.png}
+	\caption{Predicted CO\textsubscript{2} emissions under different land use and socio-economic policy scenarios.}
+	\label{fig:policy_predictions}
+\end{figure}
+
+\subsection{Land Use Carbon Sensitivity Index (LUCSI) Results}
+
+To evaluate the relative carbon efficiency of land transitions, the Land Use Carbon Sensitivity Index (LUCSI) was computed for major land-use change categories. The LUCSI quantifies the marginal change in CO$_2$ emissions per unit of GDP associated with a 1\% change in each land-use transition. Table~\ref{tab:lucsivalues} summarizes the estimated LUCSI values derived from the regression and scenario analyses.
+
+\begin{table}[H]
+	\centering
+	\caption{Estimated Land Use Carbon Sensitivity Index (LUCSI) for selected land transitions}
+	\label{tab:lucsivalues}
+	\begin{tabular}{lcc}
+		\hline
+		\textbf{Land Use Transition} & \textbf{LUCSI (tCO$_2$/USD)} & \textbf{Interpretation} \\
+		\hline
+		Forest $\rightarrow$ Cropland & +0.084 & Emission-intensive \\
+		Cropland $\rightarrow$ Forest & $-$0.062 & Mitigation-effective \\
+		Grassland $\rightarrow$ Settlements & +0.047 & Moderate emission increase \\
+		Cropland $\rightarrow$ Grassland & $-$0.025 & Minor mitigation \\
+		Forest $\rightarrow$ Settlements & +0.065 & High emission intensity \\
+		\hline
+	\end{tabular}
+\end{table}
+
+The LUCSI analysis highlights that transitions involving deforestation or urban expansion yield positive sensitivity values, indicating a proportional increase in CO$_2$ emissions relative to GDP. In contrast, land conversions promoting forest regeneration or grassland restoration exhibit negative LUCSI values, suggesting their mitigation potential. The largest negative LUCSI corresponds to cropland-to-forest transitions ($-$0.062), confirming that reforestation delivers the highest emission reduction efficiency per unit of economic output. Conversely, forest-to-cropland conversion shows the highest positive LUCSI (+0.084), implying substantial carbon costs associated with agricultural expansion. These findings demonstrate that LUCSI serves as an effective comparative metric for prioritizing land management strategies under national climate and economic development goals.
+
+
+\subsection{Discussion}
+%The results provide evidence-informed insights that may support land-use policy discussions in Tanzania, while remaining conditional on the modeling assumptions and data limitations.
+%The results of this study provide two key contributions: first, they deliver critical, actionable insights for land-use policy in Tanzania; and second, they validate a novel analytical framework with significant potential for broader application. By integrating multiple linear regression (MLR), ARIMA, and XGBoost models, our framework demonstrates that targeted land use interventions particularly the conversion of cropland to forest can lead to substantial emissions reductions even in a rapidly developing context. This outcome aligns with global evidence on reforestation \cite{psistaki2024overview, raihan2024review} but was quantified here using a method specifically designed for national level policy support where data are limited.
+The results provide evidence-informed insights that may support land-use policy discussions in Tanzania, while remaining conditional on the modeling assumptions and data limitations. The study makes two main contributions. First, it offers analytical insights that can inform land-use policy discussions in Tanzania. Second, it presents an integrated analytical framework with potential for broader application in data-limited contexts. By combining multiple linear regression (MLR), ARIMA, and XGBoost models, the framework highlights the relative importance of different land-use transitions within the modeled scenarios. In particular, scenarios involving the conversion of cropland to forest are associated with notable reductions in projected CO$_2$ emissions. This pattern is consistent with global evidence on the climate mitigation potential of reforestation \cite{psistaki2024overview, raihan2024review}, while the present study quantifies these relationships using a modeling approach designed for national-level analysis under limited data conditions.
+
+%The results of this study provide important insights into the dynamic interplay between land use change, socio-economic drivers, and CO\textsubscript{2} emissions within a rapidly developing context. By integrating multiple linear regression (MLR), ARIMA, and XGBoost models, the research demonstrates that targeted land use interventions particularly the conversion of cropland to forest can lead to substantial reductions in projected emissions. This outcome aligns with a growing body of evidence highlighting the critical role of reforestation and afforestation in global climate mitigation strategies \cite{psistaki2024overview, raihan2024review}.
+ For instance, \cite{griscom2017natural} estimated that natural climate solutions, including forest restoration, could contribute up to 37\% of the cost-effective CO\textsubscript{2} mitigation required by 2030. This finding supports our scenario-based results, which show that cropland-to-forest conversion represents one of the more impactful pathways for reducing emissions in Tanzania within the modeled scenarios.\hl{These findings highlight the role of land-use planning in climate mitigation. In Tanzania, reforestation, conservation, and agroforestry could support NDC targets while enhancing carbon sequestration and livelihoods.}
+
+The observed influence of urbanization and GDP growth on emissions trajectories is consistent with previous empirical evidence. Studies such as \cite{sun2022impacts, wang2019nexus} have reported that rapid urban expansion in developing economies typically drives higher CO\textsubscript{2} output due to increased energy consumption and transportation demand. However, our findings indicate that these effects can be mitigated through sustainable urban planning, echoing the conclusions of \cite{artmann2019smart}, who emphasized the value of compact city designs and integrated green infrastructure. Thus, the combination of socio-economic and environmental interventions emerges as a more effective and sustainable pathway compared to isolated sectoral measures.
+
+From a methodological perspective, this study \hl{adds empirical evidence to the growing body of research indicating that hybrid modeling approaches can complement single-method frameworks in environmental forecasting.} The \hl{relatively higher predictive accuracy observed for XGBoost in this dataset} compared to traditional statistical models is consistent with previous studies \cite{chen2019extreme, gelete2023hybrid}, which demonstrate the capability of gradient boosting algorithms to capture complex nonlinear and interaction effects in environmental datasets. While ARIMA effectively captures temporal dynamics, it \hl{is generally less suited to representing nonlinear relationships, which machine-learning approaches may help to capture when sufficient data are available.} 
+The primary methodological contribution of this work lies in the \hl{practical integration of econometric, time-series, and machine-learning approaches within a single analytical framework applied to national land-use emissions data. Within the limits of the available dataset}, the \hl{lower prediction errors obtained by XGBoost} suggest \hl{that machine-learning models can provide a useful complementary perspective} for capturing the complex, non-linear interactions that characterize land systems, \hl{although their results should be interpreted cautiously due to their limited transparency compared with statistical models.}
+
+Furthermore, the introduction of the Land Use Carbon Sensitivity Index (LUCSI) \hl{is intended as an exploratory indicator} that links environmental impact to economic activity, \hl{providing a simplified metric that may help policymakers compare carbon implications relative to economic output. Rather than representing a definitive decision rule}, the index \hl{serves as a supporting analytical tool} that can assist in identifying land-use transitions that may warrant closer policy attention.
+
+This combination of forecasting analysis and economic sensitivity indicators \hl{illustrates a potential analytical framework for examining land-use emissions dynamics}. While demonstrated using data from Tanzania, the methodology may be \hl{adaptable to other contexts where comparable national-level datasets on land use, emissions, and economic activity are available, although further validation in different geographical and institutional settings would be required}.
+
+
+%which demonstrate the capability of gradient boosting algorithms to capture complex nonlinear and interaction effects in environmental datasets. While ARIMA effectively captures temporal dynamics, it lacks the flexibility to model nonlinear relationships a gap successfully addressed by the machine learning component of this framework.
+%
+%The primary methodological contribution of this work lies in its integrated, hybrid approach.\hl{The comparatively lower prediction errors achieved by XGBoost within this dataset suggest the value of machine learning} in capturing the complex, non-linear interactions that characterize land systems, a capability often missing from standard IPCC inventory methods. Furthermore, the introduction of the Land Use Carbon Sensitivity Index (LUCSI) provides a practical decision-support tool that directly links environmental impact to economic activity, enabling policymakers to prioritize interventions based on carbon efficiency per unit of GDP. This combination of robust forecasting with economic sensitivity analysis creates a powerful and adaptable framework. While demonstrated in Tanzania, the methodology requires only commonly available national-level data on land use, emissions, and GDP, making it readily transferable to other developing countries seeking to implement data-driven climate strategies under the Paris Agreement.
+
+Despite its strengths, the study acknowledges several limitations. The policy intervention scenarios, while informative, are based on simplified assumptions about changes in land use and socio-economic conditions. Real-world implementation may be constrained by governance capacity, policy enforcement, and socio-political factors that were not explicitly modeled. Similar challenges have been observed by \cite{hauck2019combining}, who emphasized the importance of strong institutional frameworks and sustained investment in translating land-use scenarios into actionable policy outcomes.
+
+Another limitation concerns the lack of a fine-grained spatial dimension. Although national-level aggregation facilitates robust time-series modeling, it obscures local emission hotspots and limits regional analysis of land management strategies \cite{regional_ghg_2025}. Future research should integrate Geographic Information Systems (GIS) and satellite-based datasets to validate model outcomes at sub-national scales and generate high-resolution emission maps. This spatial enhancement would provide policymakers with more localized and actionable insights for targeted land-use planning and conservation efforts. \hl{Future research could address this issue by applying clustered standard errors or panel-data estimation approaches to account for within-year correlation in stacked transition datasets.}
+
+\hl{While the modeling framework provides structured insights into potential mitigation pathways, the results should be interpreted in light of several methodological constraints. Model performance is influenced by the limited temporal sample, data aggregation at the national scale, preprocessing transformations, and cross-validation design. In addition, because socio-economic covariates repeat across multiple land-use transition observations within the same year, the stacked dataset structure may induce within-year residual correlation, potentially violating the strict independence assumption of ordinary least squares regression. In particular, machine learning results may be sensitive to data partitioning and potential information leakage in small datasets. Therefore, the identification of cropland-to-forest conversion as a high-impact mitigation pathway reflects patterns within the current analytical framework rather than a definitive ranking across all possible land transitions. Future research incorporating expanded datasets, spatial disaggregation, and alternative validation schemes would improve robustness and strengthen causal interpretation. Applying clustered or panel-based estimation approaches could further improve the robustness of statistical inference in future analyses.}
+
+
+
+
+
+
+\subsection{LUCSI as a Decision-Support Metric.}
+The introduction of the Land Use Carbon Sensitivity Index (LUCSI) adds an innovative decision-support component to the analytical framework. LUCSI provides a scalable indicator that links economic activity with land-use-related carbon emissions, enabling policymakers to identify where interventions yield the greatest emission reduction per unit of GDP. By quantifying the marginal carbon response of specific land transitions relative to economic output, LUCSI bridges the gap between scientific modeling and policy implementation. This strengthens the study’s contribution by demonstrating how integrated, data-driven indicators can guide cost-effective mitigation strategies and inform national reporting under the Sustainable Development Goals (SDGs) and the Paris Agreement.
+
+In summary, this study demonstrates the effectiveness of integrating statistical and machine learning approaches for analyzing and forecasting land-use-driven CO\textsubscript{2} emissions. It provides empirical evidence that well-targeted land transitions especially reforestation and sustainable urban planning can yield measurable climate benefits. Overall, the findings underscore the value of data-driven, cross-sectoral approaches in designing and implementing effective national climate policies in rapidly developing economies such as Tanzania.
+
+
+
+
+
+\section{Conclusion and Recommendations}
+\label{sec:conclusion}
+
+\subsection{Conclusion}
+
+This study developed and applied an integrated hybrid modeling framework to examine the relationship between land-use change and CO$_2$ emissions, using Tanzania as a representative case study in a data-scarce national context. By combining accounting-consistent land-use transitions with statistical, time-series, and machine-learning models, the framework enables comparative exploration of emission responses under alternative land-use and socio-economic scenarios.
+
+Within the scope of the modeled scenarios, cropland-to-forest conversion consistently emerged as a land-use pathway associated with lower modeled net emissions relative to other transitions, while socio-economic drivers such as urbanization and GDP growth were associated with upward pressure on emissions. The Land Use Carbon Sensitivity Index (LUCSI) was introduced as an application-specific indicator to support comparative interpretation of these scenario-based results by expressing emission responsiveness relative to economic output, rather than as a new theoretical sensitivity measure or a prescriptive policy metric.
+
+\hl{Model evaluation indicates that machine-learning approaches, particularly XGBoost, exhibited lower prediction errors than linear and time-series models under the adopted evaluation design. However, these results are conditional on the available data, model structure, and validation approach, and should therefore be interpreted as internal benchmarking outcomes rather than as evidence of generalizable forecasting superiority.}
+
+Overall, the primary contribution of this study lies in methodological integration rather than in the introduction of new predictive theory or policy prescriptions. The proposed framework is intended to support exploratory analysis, comparison of alternative land-use pathways, and structured decision support under uncertainty, rather than to identify optimal mitigation strategies or provide decision-ready forecasts. Future work incorporating longer time series, spatially explicit data, and expanded validation strategies would further strengthen the robustness and policy relevance of the approach.
+
+
+%\subsection{Conclusion}
+%
+%This study developed and applied an integrated hybrid modeling framework to quantify the impact of land-use change on CO$_2$ emissions, using Tanzania as a critical and representative case study. The results demonstrate that the framework successfully identifies cropland-to-forest conversion as the most effective land based mitigation strategy for Tanzania, while the LUCSI index provides a novel metric for comparing the economic efficiency of different interventions. More broadly, the research provides a transferable methodology that moves beyond static inventories towards dynamic, predictive carbon accounting. The framework's reliance on accessible national datasets and its combination of interpretable statistical models with powerful machine learning forecasting makes it a practical tool for policymakers in other data-scarce regions aiming to fulfill their climate commitments and align economic development with carbon mitigation.
+%
+%%This study applied an integrated modeling framework that combines multiple linear regression (MLR), autoregressive integrated moving average (ARIMA), and extreme gradient boosting (XGBoost) to quantify and forecast the impact of land use change on CO$_2$ emissions in Tanzania. The results demonstrate that land use transitions particularly cropland-to-forest conversion substantially reduce emissions, while socio-economic drivers such as urbanization and GDP growth tend to increase them. The introduction of the Land Use Carbon Sensitivity Index (LUCSI) provides a new analytical dimension by linking emission sensitivity directly to economic performance. Through LUCSI, the study identifies which land transitions yield the greatest carbon mitigation per unit of GDP, enhancing the policy relevance of modeling outputs. 
+%
+%%Model evaluation confirms that XGBoost outperforms traditional regression and time-series models, underscoring the effectiveness of machine learning in capturing complex, nonlinear relationships within environmental datasets. Policy simulations further highlight that reforestation and sustainable urban planning are the most impactful strategies for balancing development and mitigation goals. By integrating advanced modeling with a novel economic–ecological sensitivity index, this research advances the methodological frontier of land-based carbon analysis and provides an adaptable framework for other developing countries facing similar environmental and data challenges.
+%
+%\hl{Model evaluation indicates that XGBoost achieved lower prediction errors than traditional regression and time-series models within the scope of the available dataset. This suggests that machine learning approaches may offer advantages in capturing complex, nonlinear relationships in environmental systems. However, these findings are contingent on the current data structure and modeling assumptions, and further validation across expanded datasets would strengthen confidence in their broader applicability.}
+%
+
+
+
+%This study applied an integrated modeling framework combining multiple linear regression (MLR), autoregressive integrated moving average (ARIMA), and advanced machine learning approaches to quantify and forecast the impact of land use change on CO\textsubscript{2} emissions. The analysis revealed that land use transitions, particularly the conversion of cropland to forest or grassland, exert a substantial influence in reducing atmospheric carbon emissions. The results further indicate that socio-economic dynamics, including urbanization rate and GDP growth, play a decisive role in shaping emissions trajectories. Accelerated urbanization was consistently associated with higher CO\textsubscript{2} output, emphasizing the need to balance economic growth with environmental sustainability.
+%
+%Predictive performance assessment demonstrated that machine learning models, notably the XGBoost algorithm, achieved superior accuracy metrics compared to traditional regression and time series approaches, as reflected by lower root mean square error (RMSE) and mean absolute error (MAE) values. These findings underscore the potential of data-driven models in supporting forward-looking environmental decision-making. Furthermore, the policy intervention simulations demonstrated that strategic land management, such as reforesting marginal cropland, can yield significant reductions in projected emissions. This highlights the necessity of integrating land use planning with carbon mitigation strategies to achieve long-term climate goals. Overall, the study offers robust quantitative evidence that coordinated land use and socio-economic planning can play a critical role in mitigating CO\textsubscript{2} emissions and advancing global climate targets.
+
+\subsection{Recommendations}
+
+The evidence generated by this study suggests several strategic directions for policymakers, urban planners, and researchers aiming to mitigate CO\textsubscript{2} emissions through sustainable land use and socio-economic interventions. First, targeted land use policies should be implemented to promote reforestation and the conversion of low-productivity cropland into forest or grassland, thereby maximizing the carbon sequestration potential of available landscapes. Equally important is the management of urban growth through well-structured planning frameworks that limit horizontal expansion, encourage vertical development, and incorporate green infrastructure solutions capable of offsetting part of the emissions generated by urban activities.
+
+In addition, predictive modeling tools such as the MLR and machine learning models developed in this research should be embedded into environmental policy workflows to enable scenario-based decision-making. Such integration would provide planners with timely, data-driven insights to anticipate and mitigate potential emission surges. Strengthening data collection systems remains a priority, particularly the development of high-resolution, spatially explicit datasets on land use patterns, emissions sources, and socio-economic indicators, which would enhance the precision of future modeling efforts. Finally, this study advocates for a more interdisciplinary approach to emissions research, encouraging collaborations that merge socio-economic, environmental, and technological perspectives to build comprehensive simulation frameworks capable of addressing the multifaceted drivers of CO\textsubscript{2} emissions. Together, these recommendations form a practical pathway toward optimizing land use strategies, achieving emission reduction targets, and supporting broader sustainable development objectives.
+
+%	\printcredits
+\section*{Contributions}
+\label{sec:contributions}
+
+This work makes several key contributions to the field of environmental modeling and climate policy. First, it integrates multi-source datasets, including national emissions inventories and socio-economic statistics, into a unified analytical framework. Second, by combining traditional econometric models with modern machine learning techniques, it leverages the strengths of each approach to improve predictive accuracy and robustness. Third, it delivers actionable insights for policymakers, highlighting specific land use strategies and urban planning interventions that could significantly reduce CO\textsubscript{2} emissions. Finally, it contributes to the global discourse on climate change mitigation by providing a replicable methodological template for developing countries facing similar environmental and socio-economic pressures.
+
+
+
+
+%\section*{Funding Statement}
+%
+%This research did not receive any specific grant from funding agencies in the public, commercial, or not-for-profit sectors.
+%
+%\section*{Declaration of competing interest}
+%
+%The authors have no competing interests to declare.
+%
+%
+%\section*{Acknowledgements}
+%The authors would like to acknowledge the support and contributions of colleagues and institutions that assisted in the development of this study. We extend our gratitude to the anonymous reviewers whose comments greatly improved the manuscript. We also thank the various data providers and researchers whose work laid the foundation for this study.
+
+
+
+
+%\section*{Acknowledgments}
+%Authors are thankful to the handling editor
+%and reviewer for their useful suggestions which improved the quality of this paper. Also, we gratefully acknowledges The Nelson Mandela African Institution of Science and Technology (NM-AIST) and  National Institute of Transport (NIT).
+%
+%\section*{Declaration of competing interest}
+% The authors assert that they do not have any identifiable financial conflicts of interest or personal connections that could have potentially influenced the findings presented in this research paper.
+%\section*{Funding}
+% No any fund received in accomplishing this study.
+
+\section*{Data Availability}
+
+\hl{The data that support the findings of this study are publicly available from the repositories listed below:}
+
+\begin{enumerate}
+	\item \hl{National Forest Resources Monitoring and Assessment (NAFORMA): National land-use and land-cover data used for constructing land-use categories and transitions. Accessed through official national repositories.}
+	
+	\item \hl{ World Bank Open Data (WBOD)  Accessed: 16 December 2022: Socio-economic indicators including total population, urbanization rate, and gross domestic product (GDP). 
+	Population (total):} \url{https://data.worldbank.org/indicator/SP.POP.TOTL}
+ GDP (current US\$): \url{https://data.worldbank.org/indicator/NY.GDP.MKTP.CD}
+		
+	
+	\item \hl{Food and Agriculture Organization (FAOSTAT): Supplementary land-use and agricultural statistics used for consistency checks and validation.} \url{https://www.fao.org/faostat}, Accessed: 16 December 2022.
+	
+	\item \hl{Sokoine University of Agriculture (SUA), Greenhouse Gas Centre: National land-sector CO$_2$ emissions data used as the primary emissions time series in this study. Access provided through institutional data archives.}
+\end{enumerate}
+
+
+\appendix
+\section*{Appendix A: Regression Diagnostics}
+\label{app:diagnostics}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{residualplot.pdf}
+	\caption{
+		Residual versus fitted values plot for the multiple linear regression model. The residuals are randomly distributed around zero, indicating no strong heteroscedasticity in the model.
+	}
+	\label{fig:residual}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{qq_plot.pdf}
+	\caption{
+		Normal Q-Q plot of regression residuals. The points closely follow the 
+		reference line, indicating that the residuals are approximately normally distributed.
+	}
+	\label{fig:qq}
+\end{figure}
+
+
+\section*{Appendix B: Variable dictionary and transformation}
+
+\begin{table}[H]
+	\centering
+	\caption{Table A1. Variable dictionary and transformation summary}
+	\begin{tabular}{lllll}
+		\hline
+		\textbf{Variable} & \textbf{Description} & \textbf{Unit} & \textbf{Transformation} & \textbf{Role} \\
+		\hline
+		CO2 & Net land-use CO$_2$ emissions & Metric tons & Log-transformed & Response \\
+		Forest & Forest land area & \% of national land & None & Predictor \\
+		Cropland & Cropland area & \% of national land & None & Predictor \\
+		Urban & Urban population share & \% & Log-transformed & Predictor \\
+		GDP & Gross Domestic Product & USD (current) & Log-transformed & Predictor \\
+		LU\_Transition & Land-use transition category & Categorical & Dummy encoded & Predictor \\
+		Year & Calendar year & Year & None & Control \\
+		\hline
+	\end{tabular}
+\end{table}
+
+\section*{Appendix C: Multicollinearity Diagnostics}
+\label{tab:VIF}
+\begin{table}[H]
+	\centering
+	\caption{Variance Inflation Factor (VIF) diagnostics for regression predictors}
+	%\label{vif}
+	\begin{tabular}{lcc}
+		\hline
+		\textbf{Variable} & \textbf{VIF} & \textbf{Interpretation} \\
+		\hline
+		Cropland $\rightarrow$ Forest transition & 2.31 & Low multicollinearity \\
+		Cropland $\rightarrow$ Grassland & 1.87 & Low \\
+		Forest area share & 3.12 & Moderate but acceptable \\
+		GDP per capita & 2.76 & Low \\
+		Urbanization rate & 1.94 & Low \\
+		Population density & 2.41 & Low \\
+		\hline
+	\end{tabular}
+\end{table}
+
+
+%\section*{Data and Code Availability}
+%
+%All data sources used in this study are publicly available. Land-use data were obtained from the National Forest Resources Monitoring and Assessment (NAFORMA), while socio-economic indicators were retrieved from the World Bank and FAOSTAT databases. Because the final analytical dataset involves multiple preprocessing steps, including stacked land-use transition construction and multiple imputation using chained equations, a fully reproducible workflow is provided.
+%
+%All scripts used for data preprocessing, imputation, model estimation, validation, and scenario analysis are publicly available at: \url{https://github.com/USERNAME/REPOSITORY} (or Zenodo/OSF DOI).
+%
+%Processed datasets required to reproduce the reported results, along with detailed metadata and instructions for reconstructing the stacked dataset from raw sources, are included in the repository, subject to data-sharing agreements of the original providers.
+ 
+%\section*{Data availability statement}
+%The data used is open data, as cited in the main text and listed in the reference page.
+
+\nolinenumbers
+
+% Please compile your BiBTeX database using the "plos2025.bst" BibTeX style.
+% This file is part of the current package.
+% A sample BibTeX file is also included as "plos_bibtex_sample.bib".
+%
+% or
+%
+% Type in your references following Vancouver style and reference formatting instructions
+% available at https://journals.plos.org/plosone/s/submission-guidelines#loc-references
+% \begin{thebibliography}{}
+% \bibitem{}
+% Text
+% \end{thebibliography}
+
+\bibliography{plos_bibtex_sample}
+
+
+\end{document}
+
