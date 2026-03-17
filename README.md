@@ -18,7 +18,7 @@ The repository also contains a **LaTeX manuscript template** used for preparing 
 ├── Sinariors.m
 ├── emissionPopulationGdp_over_time.m
 ├── emissions_by_landUse_Type.m
-├── Correlation.m
+├── Correlation.R
 ├── Average CO2 Emissions by Land Use Type.m
 ├── Emissions Forecast Comparison.m
 ├── rf_model.m
