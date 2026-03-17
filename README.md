@@ -21,7 +21,7 @@ The repository also contains a **LaTeX manuscript template** used for preparing 
 ├── Correlation.R
 ├── Average CO2 Emissions by Land Use Type.R
 ├── Emissions Forecast Comparison.m
-├── rf_model.m
+├── rf_model.R
 ├── LUC and Emissions data in Tanzania
 ├── plos_latex_template.tex
 ├── plos_bibtex_sample.bib
