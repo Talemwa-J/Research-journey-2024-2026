@@ -19,7 +19,7 @@ The repository also contains a **LaTeX manuscript template** used for preparing 
 ├── emissionPopulationGdp_over_time.m
 ├── emissions_by_landUse_Type.m
 ├── Correlation.R
-├── Average CO2 Emissions by Land Use Type.m
+├── Average CO2 Emissions by Land Use Type.R
 ├── Emissions Forecast Comparison.m
 ├── rf_model.m
 ├── LUC and Emissions data in Tanzania
